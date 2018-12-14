@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.erp.apv_set.Dao">
+
+	<resultMap id="setResult" type="com.project.erp.apv_set.Apv_set">
+		<result column="num" property="num" />
+		<result column="status" property="status" />
+	</resultMap>
+
+	<insert id="insert" parameterType="com.project.erp.apv_set.Apv_set">
+		insert into final_apv_set values(final_apv_set_seq.nextval, #{status})
+	</insert>
+	
+	<select id="select" parameterType="int" resultMap="setResult">
+		select * from final_apv_set where num=#{num}
+	</select>
+	
+	<select id="selectAll" resultMap="setResult">
+		select * from final_apv_set order by num
+	</select>
+	
+	<update id="update" parameterType="com.project.erp.apv_set.Apv_set">
+		update final_apv_set set status=#{status} where num=#{num}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete from final_apv_set where num=#{num}
+	</delete>
+	
+</mapper>
+

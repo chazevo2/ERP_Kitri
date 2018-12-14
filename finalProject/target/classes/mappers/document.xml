@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.erp.docs.Dao">
+
+	<resultMap id="docsResult" type="com.project.erp.docs.Document">
+		<result column="num" property="num" />
+		<result column="title" property="title" />
+		<result column="path" property="path" />
+	</resultMap>
+
+	<insert id="insert" parameterType="com.project.erp.docs.Document">
+		insert into final_documents values(final_docs_seq.nextval, #{title}, #{path})
+	</insert>
+	
+	<select id="select" parameterType="int" resultMap="docsResult">
+		select * from final_documents where num=#{num}
+	</select>
+	
+	<select id="selectAll" resultMap="docsResult">
+		select * from final_documents order by num
+	</select>
+	
+	<update id="update" parameterType="com.project.erp.docs.Document">
+		update final_documents set title=#{title}, path=#{path} where num=#{num}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete from final_documents where num=#{num}
+	</delete>
+	
+</mapper>
+

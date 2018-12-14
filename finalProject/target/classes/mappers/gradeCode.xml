@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	 <mapper namespace="com.project.erp.gradeCode.gradeCodeDao">
+	 
+	 <resultMap id="gradeCodeResult" type="com.project.erp.gradeCode.GradeCode"> 
+	 	<result column="num" property="num"/>
+	 	<result column="name" property="name"/>	
+	 </resultMap>
+	 
+	 <insert id="insert" parameterType="com.project.erp.gradeCode.GradeCode">
+	 	insert into final_gradeCode values(#{num}, #{name})
+	 </insert>
+	 
+	  <select id="selectByNum" parameterType="String" resultMap="gradeCodeResult">
+	 	select * from final_gradeCode where num=#{num}
+	 </select>
+	 
+	 <select id="selectByName" parameterType="String" resultMap="gradeCodeResult">
+	 	select * from final_gradeCode where name=#{name}
+	 </select>
+	 
+	 <select id="selectAll" resultMap="gradeCodeResult">
+	 	select * from final_gradeCode
+	 </select>
+	</mapper>

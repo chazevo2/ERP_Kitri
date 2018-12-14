@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.erp.member.memberDao">
+
+<resultMap id="memberResult" type="com.project.erp.member.Member">
+		<result column="id" property="id" />
+		<result column="pwd" property="pwd" />
+		<result column="name" property="name" />
+		<result column="hp" property="hp" />
+		<result column="email" property="email" />
+		<result column="address" property="address" />
+		<result column="picture" property="picture" />
+		<result column="departmentCode" property="departmentCode" />
+		<result column="gradeCode" property="gradeCode" />
+		<result column="hiredate" property="hiredate" />
+		<result column="firedate" property="firedate" />
+		<result column="confirm" property="confirm" />
+	</resultMap>
+	
+	<insert id="insert" parameterType="com.project.erp.member.Member">
+		insert into final_member values(#{id}||final_member_seq.nextval, #{pwd}, #{name}, #{hp}, #{email}, #{address}, #{picture}, #{departmentCode}, #{gradeCode}, sysdate, null, 'n')
+	</insert>
+	
+	<update id="update" parameterType="com.project.erp.member.Member">
+		update final_member set pwd=#{pwd}, hp=#{hp}, address=#{address}, picture=#{picture}, departmentCode=#{departmentCode}, gradeCode=#{gradeCode}, confirm=#{confirm} where id=#{id}
+	</update>
+	
+	<delete id="delete" parameterType="String">
+		delete final_member where id=#{id}
+	</delete>
+	
+	<select id="selectById" parameterType="String" resultMap="memberResult">
+		select * from final_member where id=#{id}
+	</select>
+	
+	<select id="selectByName" parameterType="String" resultMap="memberResult">
+		select * from final_member where name like '%'||#{name}||'%'
+	</select>
+	
+	<select id="selectByName1" parameterType="String" resultMap="memberResult">
+		select * from final_member where name=#{name}
+	</select>
+	
+	<select id="selectByDepartmentCode" parameterType="int" resultMap="memberResult">
+		select * from final_member where departmentCode=#{departmentCode}
+	</select>
+	
+	<select id="selectByConfirm" parameterType="String" resultMap="memberResult">
+		select * from final_member where confirm=#{confirm} order by id
+	</select>
+	
+	<select id="selectAll" resultMap="memberResult">
+		select * from final_member order by hiredate
+	</select>
+	
+</mapper>
