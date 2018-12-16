@@ -76,7 +76,7 @@ create table final_approval (
 	title varchar2(50) not null,
 	apv_date date not null,
 	path varchar2(100) not null,
-	rejection varchar2(100),
+	rejection varchar2(500),
 	log varchar2(100) not null
 );
 

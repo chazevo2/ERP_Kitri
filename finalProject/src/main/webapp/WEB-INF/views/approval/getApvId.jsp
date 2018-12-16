@@ -7,7 +7,7 @@
 <style>
 .scroll {
 	display: block;
-	width: 420px;
+	width: 370px;
 	border-collapse: collapse;
 	border: 2px solid #000;
 }
@@ -29,21 +29,16 @@
 }
 
 .scroll th:nth-of-type(1), .scroll td:nth-of-type(1) {
-	width: 45px;
-	text-align: center;
-}
-
-.scroll th:nth-of-type(2), .scroll td:nth-of-type(2) {
 	width: 80px;
 	text-align: center;
 }
 
-.scroll th:nth-of-type(3), .scroll td:nth-of-type(3) {
+.scroll th:nth-of-type(2), .scroll td:nth-of-type(2) {
 	width: 100px;
 	text-align: center;
 }
 
-.scroll th:nth-of-type(4), .scroll td:nth-of-type(4) {
+.scroll th:nth-of-type(3), .scroll td:nth-of-type(3) {
 	width: 100px;
 	text-align: center;
 }
@@ -69,24 +64,29 @@
 					success : function(data) {
 						var list = eval("(" + data + ")");
 						var str = "<table class='scroll'>";
-						str += "<tr><th>#</th><th>이름</th><th>ID</th><th>부서</th><th>직급</th></tr>";
+						str += "<tr><th>이름</th><th>ID</th><th>부서</th><th>직급</th></tr>";
 						if (list.length > 0) {
 							var id = $("#loginId").val();
 							for (i = 0; i < list.length; i++) {
 								if (list[i].id != id) {
-									str += "<tr class='select'><td>" + (i + 1) + "</td><td>" + list[i].name + "</td><td>" + list[i].id + "</td><td id=d_" + i + "></td><td id=g_" + i + "></td></tr>";
+									str += "<tr class='select'><td>" + list[i].name + "</td><td>" + list[i].id + "</td><td id=d_" + i + "></td><td id=g_" + i + "></td></tr>";
 									$.getDept("d_" + i, list[i].departmentCode);
 									$.getGrade("g_" + i, list[i].gradeCode);
 								}
 							}
 						} else {
-							str += "<tr><td colspan='5'>빈목록입니다.</td></tr>"
+							str += "<tr><td colspan='4'>빈목록입니다.</td></tr>"
 						}
 						$("#result").html(str);
 
 						$(".select").on("click", function() {
-							var id = $(this).find("td").eq(2).html();
-							$("input[name=" + $("#selectApv").val() + "]", opener.document).val(id);
+							var id = $(this).find("td").eq(1).html();
+							if($("input[name=mid_id]", opener.document).val() == id) {
+								alert("잘못된 접근입니다.");
+								return;
+							} else {
+								$("input[name=" + $("#selectApv").val() + "]", opener.document).val(id);
+							}
 							window.close();
 						});
 					}

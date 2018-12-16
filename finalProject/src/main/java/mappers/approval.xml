@@ -18,7 +18,7 @@
 	</resultMap>
 
 	<insert id="insert" parameterType="com.project.erp.approval.Approval">
-		insert into final_approval values(final_approval_seq.nextval, #{id}, #{mid_id}, #{fnl_id}, #{apv_set_num}, #{title}, sysdate, #{path}, #{log})
+		insert into final_approval values(final_approval_seq.nextval, #{id}, #{mid_id}, #{fnl_id}, #{apv_set_num}, #{title}, sysdate, #{path}, '', #{log})
 	</insert>
 	
 	<select id="select" parameterType="int" resultMap="apvResult">
@@ -34,7 +34,7 @@
 	</select>
 	
 	<update id="update" parameterType="com.project.erp.approval.Approval">
-		update final_approval set apv_set_num=#{apv_set_num}, rejection=#{rejection} where num=#{num}
+		update final_approval set apv_set_num=#{apv_set_num}, rejection=#{rejection, jdbcType=VARCHAR} where num=#{num}
 	</update>
 	
 	<delete id="delete" parameterType="int">

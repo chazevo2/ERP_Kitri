@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>¹®¼­ ÀÛ¼º</title>
+<meta charset="utf-8">
+<title>ë¬¸ì„œ ì‘ì„±</title>
 <style>
 input[type=text] {
 	width: 100%;
@@ -26,36 +26,43 @@ input[type=text] {
 <!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script> -->
 <script>
 	var $$ = jQuery.noConflict();
-	$$(document).ready(function() {
-		$$("#content").summernote({
-			tabsize : 2,
-			height : 400,
-			width : '100%',
-			minHeight : null,
-			maxHeight : null,
-			focus : true
-		});
-	});
 </script>
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
+	$.note = function() {
+		$$("#content").summernote({
+			tabsize : 2,
+			height : 500,
+			width : '100%',
+			minHeight : null,
+			maxHeight : null,
+			focus : true,
+			disableResizeEditor : true
+		});
+	}
+
 	var $ = jQuery.noConflict();
 	$(document).ready(function() {
+		$.note();
+		
 		var newWin;
 		$.ajax({
 			type : "post",
 			url : "${pageContext.request.contextPath }/approval/docsList",
 			success : function(data) {
 				var list = eval("(" + data + ")");
-				var str = "<table style='width: 100%;'><caption><h4>¹®¼­ ¾ç½Ä</h4></caption><tr>";
-				str += "<td colspan='4' align='right'><a href='${pageContext.request.contextPath }/main?sub=/approval/addDocument'>¹®¼­ ¾ç½Ä Ãß°¡</a></td></tr>";
+				var str = "<table style='width: 100%;'><caption><h4>ë¬¸ì„œ ì–‘ì‹</h4></caption><tr>";
+				str += "<td colspan='4' align='right'><a href='${pageContext.request.contextPath }/main?sub=/approval/addDocument'>ë¬¸ì„œ ì–‘ì‹ ì¶”ê°€</a></td></tr>";
 				str += "<tr><td colspan='4'><br/></td></tr>";
 				if (list.length < 1) {
-					str += "<tr><td colspan='4'>ºó ¸ñ·ÏÀÔ´Ï´Ù.</td></tr><tr>";
+					str += "<tr><td colspan='4'>ë¹ˆ ëª©ë¡ì…ë‹ˆë‹¤.</td></tr><tr>";
 				} else {
 					for (i = 0; i < list.length; i++) {
 						str += "<td style='width: 25%;'><input type='button' class='ex' value='" + list[i].title + "' path='" + list[i].path + "'></td>";
-						if ((i != 0 && i % 3 == 0) || i == list.length - 1) {
+						if ((i != 0 && (i + 1) % 4 == 0) || i == list.length - 1) {
+							if (i > 0) {
+								str += "<td colspan=" + (4 - (i + 1) % 4) + "></td>";
+							}
 							str += "</tr>";
 						}
 					}
@@ -74,12 +81,32 @@ input[type=text] {
 		});
 
 		$("#write").click(function() {
+			if ($("input[name=mid_id]").val() == "" && $("input[name=fnl_id]").val() == "") {
+				$("input[name=apv_set_num]").val(4);
+			}
 			$$("#content").summernote("destroy");
-			$("#apv").submit();
+			if ($("input[name=title]").val() == "" || $("#content").val() == "") {
+				alert("ë¬¸ì„œ ì œëª©ê³¼ ë‚´ìš©ì„ ì…ë ¥ë°”ëë‹ˆë‹¤.");
+				$.note();
+				return;
+			}
+			var r = confirm("ì •ë§ ì‘ì„±í•˜ì‹œê² ìŠµë‹ˆê¹Œ?");
+			if (r == true) {
+				$("#apv").submit();
+			} else {
+				$.note();
+				return;
+			}
 		});
 
 		$(".apv_id").click(function() {
-			newWin = window.open('${pageContext.request.contextPath }/approval/getApvId', '°áÀç¼± ÁöÁ¤', 'location=no, directories=no, resizable=no, status=no, toolbar=no, menubar=no, width=440, height=270, scrollbars=no, top=300, left=300');
+			if ($(this).attr("name") == "fnl_id") {
+				if ($("input[name=mid_id]").val() == "") {
+					alert("1ì°¨ ìŠ¹ì¸ì ë¨¼ì € ì„ íƒë°”ëë‹ˆë‹¤.");
+					return;
+				}
+			}
+			newWin = window.open('${pageContext.request.contextPath }/approval/getApvId', 'ê²°ì¬ì„  ì§€ì •', 'location=no, directories=no, resizable=no, status=no, toolbar=no, menubar=no, width=440, height=270, scrollbars=no, top=300, left=300');
 			$("#selectedId").val($(this).attr("name"));
 		});
 
@@ -89,32 +116,33 @@ input[type=text] {
 <body>
 	<table>
 		<tr><td>
-				<a href="${pageContext.request.contextPath }/main?sub=/approval/approve">°áÀç¹®¼­</a>
+				<a href="${pageContext.request.contextPath }/main?sub=/approval/approve">ê²°ì¬ë¬¸ì„œ</a>
 			</td></tr>
 		<tr><td>
-				<a href="${pageContext.request.contextPath }/main?sub=/approval/write">¹®¼­ÀÛ¼º</a>
+				<a href="${pageContext.request.contextPath }/main?sub=/approval/write">ë¬¸ì„œì‘ì„±</a>
 			</td></tr>
 		<tr><td>
-				<a href="${pageContext.request.contextPath }/main?sub=/approval/write">???</a>
+				<a href="${pageContext.request.contextPath }/main?sub=/approval/docsManage">ë¬¸ì„œì–‘ì‹ê´€ë¦¬</a>
 			</td></tr>
 	</table>
-	<form id="apv" action="${pageContext.request.contextPath }/approval/write" method="post" enctype="multipart/form-data" accept-charset="utf-8">
+	<form id="apv" action="${pageContext.request.contextPath }/approval/write.do" method="post" enctype="multipart/form-data" accept-charset="utf-8">
 		<div class="container">
-			<table class="table table-hover" style="max-width: 900px;">
+			<table class="table" style="max-width: 900px;">
 				<tr><td colspan="4" id="docsList"></td></tr>
-				<tr><th style="text-align: center; height: 30px">ÆÄÀÏ¸í :</th>
+				<tr><th style="text-align: center; height: 30px">ë¬¸ì„œëª… :</th>
 					<td>
-						<input type="text" name="title">
+						<input type="text" name="title" placeholder=" ì œëª©ì„ ì‘ì„±í•´ì£¼ì„¸ìš”.">
 					</td>
 					<td colspan="2" align="right">
 						<input type="hidden" name="id" value="${sessionScope.id }">
-						<input type="button" id="write" value="¹®¼­ ÀÛ¼º">
+						<input type="hidden" name="apv_set_num" value="1">
+						<input type="button" id="write" value="ë¬¸ì„œ ì‘ì„±">
 					</td></tr>
-				<tr><th style="text-align: center; height: 30px">1Â÷½ÂÀÎ :</th>
+				<tr><th style="text-align: center; height: 30px">1ì°¨ìŠ¹ì¸ :</th>
 					<td>
 						<input type="text" class="apv_id" name="mid_id" readonly>
 					</td>
-					<th style="text-align: center; height: 30px">2Â÷½ÂÀÎ :</th>
+					<th style="text-align: center; height: 30px">2ì°¨ìŠ¹ì¸ :</th>
 					<td>
 						<input type="text" class="apv_id" name="fnl_id" readonly>
 					</td></tr>

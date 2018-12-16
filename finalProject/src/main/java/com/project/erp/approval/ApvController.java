@@ -4,7 +4,6 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
@@ -19,7 +18,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -33,22 +31,22 @@ public class ApvController {
 		this.service = service;
 	}
 
-	@RequestMapping(value = "/approval/write", method = RequestMethod.GET)
+	@RequestMapping("/approval/write")
 	public void write() {
 
 	}
 
-	@RequestMapping(value = "/approval/write", method = RequestMethod.POST)
-	public ModelAndView write(Approval a, @RequestParam(name = "content") String content) {
+	@RequestMapping("/approval/write.do")
+	public ModelAndView write(Approval a, @RequestParam(value = "content") String content) {
 		String date = new SimpleDateFormat("yyyyMMdd_HHmmssSSS").format(Calendar.getInstance().getTime());
 		String filename1 = date + ".html";
-		String filename2 = date + ".txt";		
+		String filename2 = date + ".txt";
 		File file1 = new File(defaultPath + filename1);
 		File file2 = new File(defaultPath + filename2);
-		String log = a.getId() + " / " + date + " / 생성;"; 
+		String log = a.getId() + " / " + date + " / 제출;:;";
 		try {
 			BufferedWriter bw1 = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file1), "UTF-8"));
-			BufferedWriter bw2 = new BufferedWriter(new FileWriter(file2, true));
+			BufferedWriter bw2 = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file2), "UTF-8"));
 			bw1.write(content);
 			bw2.write(log);
 			bw1.flush();
@@ -65,21 +63,17 @@ public class ApvController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		if(a.getMid_id() == null && a.getFnl_id() == null) {
-			a.setApv_set_num(4);
-		} else {
-			a.setApv_set_num(1);
-		}
+
 		a.setPath("/approvals/" + filename1);
 		a.setLog("/approvals/" + filename2);
+		System.out.println(a);
 		service.addApv(a);
 		ModelAndView mav = new ModelAndView("Main");
 		mav.addObject("sub", "/approval/approve");
 		return mav;
 	}
 
-	@RequestMapping(value = "/approval/getApvId", method = RequestMethod.GET)
+	@RequestMapping("/approval/getApvId")
 	public void getApvId() {
 
 	}
@@ -104,8 +98,76 @@ public class ApvController {
 	}
 
 	@RequestMapping("/approval/detail")
-	public void detail(@RequestParam(name = "num") int num, Model m) {
+	public void detail(@RequestParam(value = "num") int num, Model m) {
 		Approval approval = service.getApv(num);
 		m.addAttribute("approval", approval);
+	}
+
+	@RequestMapping("/approval/approve.do")
+	public ModelAndView approve(Approval a, @RequestParam(value = "content") String content) {
+		String date = new SimpleDateFormat("yyyyMMdd_HHmmssSSS").format(Calendar.getInstance().getTime());
+		String getlog = a.getLog();
+		String[] split = getlog.split("/");
+		String filename = split[split.length - 1];
+		File file = new File(defaultPath + filename);
+		int set = a.getApv_set_num();
+		String status = "";
+		if (set == 1) {
+			status = "재기안";
+			change(a.getPath(), content);
+		} else if (set == 2 || set == 4) {
+			status = "승인";
+		} else if (set == 3 || set == 5) {
+			status = "반려";
+		} else {
+			status = "반려 및 거부";
+		}
+		String log = a.getId() + " / " + date + " / " + status;
+		if (a.getRejection() != "" && a.getRejection() != null && !a.getRejection().isEmpty()) {
+			log += " / " + a.getRejection();
+		}
+		log += ";:;";
+		try {
+			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file, true), "UTF-8"));
+			bw.write(log);
+			bw.flush();
+			bw.close();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		service.editApv(a);
+
+		ModelAndView mav = new ModelAndView("Main");
+		mav.addObject("sub", "/approval/approve");
+		return mav;
+	}
+
+	public void change(String name, String content) {
+		String[] split = name.split("/");
+		String filename = split[split.length - 1];
+		File file = new File(defaultPath + filename);
+		try {
+			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), "UTF-8"));
+			bw.write(content);
+			bw.flush();
+			bw.close();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 }

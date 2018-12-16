@@ -64,7 +64,7 @@
 				<a href="${pageContext.request.contextPath }/main?sub=/approval/write">문서작성</a>
 			</td></tr>
 		<tr><td>
-				<a href="${pageContext.request.contextPath }/main?sub=/approval/write">???</a>
+				<a href="${pageContext.request.contextPath }/main?sub=/approval/docsManage">문서양식관리</a>
 			</td></tr>
 	</table>
 	<div class="container">

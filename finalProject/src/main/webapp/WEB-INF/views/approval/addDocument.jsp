@@ -26,15 +26,18 @@ input[type=text] {
 </script>
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
-	$(document).ready(function() {
+	$.note = function() {
 		$$("#content").summernote({
 			tabsize : 2,
-			height : 500,
+			height : 700,
 			width : '100%',
 			minHeight : null,
 			maxHeight : null,
 			focus : true
 		});
+	}
+	$(document).ready(function() {
+		$.note();
 
 		$("#upload").click(function() {
 			$("#file").click();
@@ -50,17 +53,16 @@ input[type=text] {
 			$$("#content").summernote("destroy");
 			if ($("input[name=title]").val() == "" || $("#content").val() == "") {
 				alert("문서 제목과 내용을 입력바랍니다.");
-				$$("#content").summernote({
-					tabsize : 2,
-					height : 500,
-					width : 800,
-					minHeight : null,
-					maxHeight : null,
-					focus : true
-				});
+				$.note();
 				return;
 			}
-			$("#doc").submit();
+			var r = confirm("정말 저장하시겠습니까?");
+			if (r == true) {
+				$("#doc").submit();
+			} else {
+				$.note();
+				return;
+			}	
 		});
 	});
 
@@ -95,25 +97,25 @@ input[type=text] {
 				<a href="${pageContext.request.contextPath }/main?sub=/approval/write">문서작성</a>
 			</td></tr>
 		<tr><td>
-				<a href="${pageContext.request.contextPath }/main?sub=/approval/write">???</a>
+				<a href="${pageContext.request.contextPath }/main?sub=/approval/docsManage">문서양식관리</a>
 			</td></tr>
 	</table>
 	<form id="doc" action="${pageContext.request.contextPath }/approval/saveDocument" method="post" enctype="multipart/form-data" accept-charset="utf-8">
 		<div class="container">
 			<table class="table table-hover" style="max-width: 900px;">
-				<tr><th style="text-align: center; height: 30px">파일명 :</th>
+				<tr><th style="text-align: center; height: 30px">파일명</th>
 					<td>
 						<input type="text" name="title">
 					</td>
 					<td>
-						&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="button" id="save" value="문서양식 저장">
 					</td>
 					<td align="right">
 						<input type="file" id="file" accept="text/html" />
 						<input type="button" id="upload" value="내 컴퓨터 파일 추가">
 					</td></tr>
-				<tr><td colspan="4">
+				<tr><th>문서내용</th>
+					<td colspan="3">
 						<textArea id="content" name="content"></textArea>
 					</td></tr>
 			</table>

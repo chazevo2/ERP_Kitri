@@ -14,6 +14,7 @@ import java.util.Calendar;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -71,4 +72,49 @@ public class DocController {
 		return mav;
 	}
 	
+	@RequestMapping("/approval/docsManage")
+	public void docsManage(Model m) {
+		ArrayList<Document> list = service.getAll();
+		m.addAttribute("list", list);
+	}
+	
+	@RequestMapping("/approval/docSave")
+	public ModelAndView docSave(Document d, @RequestParam(value = "content") String content) {
+		String[] split = d.getPath().split("/");
+		String filename = split[split.length - 1];
+		File file = new File(defaultPath + filename);
+		try {
+			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), "UTF-8"));
+			bw.write(content);
+			bw.flush();
+			bw.close();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		service.editDocument(d);
+		ModelAndView mav = new ModelAndView("Main");
+		mav.addObject("sub", "/approval/docsManage");
+		return mav;
+	}
+	
+	@RequestMapping("/approval/docDel")
+	public ModelAndView docDel(Document d) {
+		String[] split = d.getPath().split("/");
+		String filename = split[split.length - 1];
+		File file = new File(defaultPath + filename);
+		file.delete();
+		
+		service.delDocument(d.getNum());
+		ModelAndView mav = new ModelAndView("Main");
+		mav.addObject("sub", "/approval/docsManage");
+		return mav;
+	}
 }

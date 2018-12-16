@@ -36,7 +36,7 @@
 	</select>
 	
 	<select id="selectByName" parameterType="String" resultMap="memberResult">
-		select * from final_member where name like '%'||#{name}||'%'
+		select * from final_member where name like '%'||#{name}||'%' order by id
 	</select>
 	
 	<select id="selectByName1" parameterType="String" resultMap="memberResult">
