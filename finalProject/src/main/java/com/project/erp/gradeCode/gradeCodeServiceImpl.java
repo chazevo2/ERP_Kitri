@@ -44,4 +44,11 @@ public class gradeCodeServiceImpl implements gradeCodeService {
 		dao=sqlSession.getMapper(gradeCodeDao.class);
 		return dao.selectAll();
 	}
+
+	@Override
+	public void edit(GradeCode d) {
+		// TODO Auto-generated method stub
+		dao=sqlSession.getMapper(gradeCodeDao.class);
+		dao.update(d);
+	}
 }

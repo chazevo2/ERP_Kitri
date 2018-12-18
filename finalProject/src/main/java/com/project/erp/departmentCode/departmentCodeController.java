@@ -9,21 +9,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.project.erp.gradeCode.GradeCode;
-
 @Controller
 public class departmentCodeController {
 	@Resource(name="departmentCodeService")
 	private departmentCodeService service;
 	
 	@RequestMapping("/departmentCode/addForm")
-	public void addForm() {
-		
+	public String addForm() {
+		return "departmentCode/addForm";
 	}
 	
 	@RequestMapping("/departmentCode/add")
-	public void addF() {
-		
+	public String add(DepartmentCode d) {
+		service.add(d);
+		return "departmentCode/addForm";
+	}
+	@RequestMapping("/departmentCode/edit")
+	public String edit(@RequestParam(value="num")int num,@RequestParam(value="name")String name) {
+		DepartmentCode d=service.getInfoByNum(num);
+		d.setName(name);
+		service.edit(d);
+		return "departmentCode/addForm";
 	}
 	
 	@RequestMapping("/departmentCode/getByName")
@@ -49,17 +55,11 @@ public class departmentCodeController {
 		mav.addObject("list", list);
 		return mav;
 	}
-	
-	@RequestMapping("/departmentCode/adminForm1")
-	public ModelAndView adminForm1() {
-		ModelAndView mav=new ModelAndView("Main");
+	@RequestMapping("/departmentCode/adminForm")
+	public ModelAndView adminForm() {
+		ModelAndView mav=new ModelAndView("member/adminForm.admin");
 		ArrayList<DepartmentCode> list=service.getInfoAll();
 		mav.addObject("list",list);
-		mav.addObject("sub","/departmentCode/adminForm");
 		return mav;
-	}
-	@RequestMapping("/departmentCode/adminForm")
-	public String adminForm() {
-		return "member/adminForm";
 	}
 }

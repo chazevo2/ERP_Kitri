@@ -52,21 +52,21 @@ $(document).ready(function(){
 <body>
     <div class="container">
         <div class="card card-container">
-        <c:if test="${not empty sessionScope.rememberImg}">
-         <img id="profile-img" class="profile-img-card" src="${sessionScope.rememberImg}"/>
+     	<c:if test="${cookie.picture.value ne null}">
+         <img id="profile-img" class="profile-img-card" src="${cookie.picture.value}"/>
         </c:if>
-        <c:if test="${empty sessionScope.rememberImg  }">
+        <c:if test="${cookie.picture.value eq null}">
        		 <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
         </c:if>
             <p id="profile-name" class="profile-name-card"></p>
             <form action="${pageContext.request.contextPath}/member/login" method="post">
                 <span id="reauth-email" class="reauth-email"></span>
-                  <c:if test="${not empty sessionScope.rememberId }">
-       		 		<input type="text" id="id" name="id" class="form-control" placeholder="id" value="${sessionScope.rememberId}">
-       			 </c:if>
-                 <c:if test="${empty sessionScope.rememberId  }">
-       		 		<input type="text" id="id" name="id" class="form-control" placeholder="id" >
-       			 </c:if>
+       		 		 <c:if test="${cookie.id.value ne null}">
+       		 		<input type="text" id="id" name="id" class="form-control" placeholder="id" value="${cookie.id.value}">
+                	</c:if>
+                	 <c:if test="${cookie.id.value eq null}">
+       		 		<input type="text" id="id" name="id" class="form-control" placeholder="id" value="">
+                	</c:if>
                 <input type="password" id="pwd" name="pwd" class="form-control" placeholder="Password">
                 <div class="checkbox">
                     <label>

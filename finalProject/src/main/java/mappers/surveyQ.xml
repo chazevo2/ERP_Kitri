@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.erp.surveyQ.SurveyQDao">
+
+<resultMap id="surveyQResult" type="com.project.erp.surveyQ.SurveyQ">
+		<result column="snum" property="snum" />
+		<result column="title" property="title" />
+		<result column="registdate" property="registdate" />
+		<result column="modifydate" property="modifydate" />
+		<result column="startdate" property="startdate" />
+		<result column="enddate" property="enddate" />
+		<result column="parent" property="parent" />
+		<result column="qnum" property="qnum" />
+		<result column="question" property="question" />
+		<result column="atype" property="atype" />
+		<result column="snum_multiple" property="snum_multiple" />
+		<result column="qnum_multiple" property="qnum_multiple" />
+		<result column="mnum" property="mnum" />
+		<result column="mtext" property="mtext" />
+	</resultMap> 
+		
+	<insert id="insert" parameterType="com.project.erp.surveyQ.SurveyQ">
+		insert all
+		into final_survey values(final_survey_seq.nextval, #{title}, sysdate, null, #{startdate}, #{enddate})
+		into final_question values(final_survey_seq.currval, question_seq.nextval, #{question}, #{atype})
+		into final_multiplechoice values(final_survey_seq.currval, question_seq.currval, #{mnum}, #{mtext})
+		select * from dual
+	</insert>
+	
+	<!--<insert id="insertQ" parameterType="com.project.erp.surveyQ.SurveyQ">
+		insert all
+		into question values(#{parent}, #{qnum}, #{question}, #{atype}, null)
+		into multiplechoice values(#{snum_multiple}, #{qnum_multiple}, #{mnum}, #{mtext})
+		select * from dual;
+	</insert>	
+	
+	<update id="update" parameterType="com.project.erp.surveyQ.SurveyQ">
+		update question set qtext=#{qtext}, atype=#{atype}, attach=#{attach}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete question where qnum=#{qnum}
+	</delete>
+	
+	<select id="selectBySurveyid" resultMap="questionResult">
+		select * from question where surveyid by surveyid, qnum
+	</select>-->
+	
+	<select id="selectAll" resultMap="surveyQResult">
+		select * from final_survey order by snum desc
+	</select>
+	
+</mapper>

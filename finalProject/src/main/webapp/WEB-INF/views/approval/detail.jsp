@@ -1,16 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
-<head>
-<title>Insert title here</title>
 <meta charset="EUC-KR">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!-- summernote -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.js"></script>
 <script>
@@ -18,7 +13,7 @@
 	$(document).ready(function() {
 		$$("#content").summernote({
 			tabsize : 2,
-			height : 500,
+			height : 700,
 			width : '100%',
 			minHeight : null,
 			maxHeight : null,
@@ -27,46 +22,46 @@
 		});
 	});
 </script>
+
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
 	var $ = jQuery.noConflict();
-	$.getName = function(id) {
-		$.ajax({
-			type : "post",
-			url : "${pageContext.request.contextPath }/member/getName",
-			data : "id=" + id,
-			success : function(data) {
-				var member = eval("(" + data + ")");
-				var name = member.name;
-
-				var deptcode = member.departmentCode;
-				$.ajax({
-					type : "post",
-					url : "${pageContext.request.contextPath }/departmentCode/getByNum",
-					data : "num=" + deptcode,
-					success : function(data) {
-						var dept = eval("(" + data + ")");
-						var str = name + " (" + dept.name + " / " + id + ")";
-						$("#" + id).html(str);
-					}
-				});
-			}
-		});
-	}
-
-	$.getSet = function(set) {
-		$.ajax({
-			type : "post",
-			url : "${pageContext.request.contextPath }/approval/getSet",
-			data : "set=" + set,
-			success : function(data) {
-				var apv_set = eval("(" + data + ")");
-				$("#" + set).html(apv_set.status);
-			}
-		});
-	}
-
 	$(document).ready(function() {
+		$.getName = function(id) {
+			$.ajax({
+				type : "post",
+				url : "${pageContext.request.contextPath }/member/getName",
+				data : "id=" + id,
+				success : function(data) {
+					var member = eval("(" + data + ")");
+					var name = member.name;
+
+					var deptcode = member.departmentCode;
+					$.ajax({
+						type : "post",
+						url : "${pageContext.request.contextPath }/departmentCode/getByNum",
+						data : "num=" + deptcode,
+						success : function(data) {
+							var dept = eval("(" + data + ")");
+							var str = name + " (" + dept.name + " / " + id + ")";
+							$("#" + id).html(str);
+						}
+					});
+				}
+			});
+		}
+
+		$.getSet = function(set) {
+			$.ajax({
+				type : "post",
+				url : "${pageContext.request.contextPath }/approval/getSet",
+				data : "set=" + set,
+				success : function(data) {
+					var apv_set = eval("(" + data + ")");
+					$("#" + set).html(apv_set.status);
+				}
+			});
+		}
 		var file = $("#path").val();
 		$.get(file, function(data) {
 			$$('#content').summernote("code", data);
@@ -129,19 +124,38 @@
 		});
 	});
 </script>
-</head>
-<body>
-	<table>
-		<tr><td>
-				<a href="${pageContext.request.contextPath }/main?sub=/approval/approve">결재문서</a>
-			</td></tr>
-		<tr><td>
-				<a href="${pageContext.request.contextPath }/main?sub=/approval/write">문서작성</a>
-			</td></tr>
-		<tr><td>
-				<a href="${pageContext.request.contextPath }/main?sub=/approval/docsManage">문서양식관리</a>
-			</td></tr>
-	</table>
+<style>
+.rewrite, .resubmit, .approve {
+	width: 32%;
+}
+
+#apvlog {
+  max-height: 100px;
+  overflow: auto;
+}
+</style>
+	 <div class="m-grid__item m-grid__item--fluid m-wrapper">
+					<div class="m-content">
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="m-portlet m-portlet--creative m-portlet--first m-portlet--bordered-semi">
+									<div class="m-portlet__head">
+										<div class="m-portlet__head-caption">
+											<div class="m-portlet__head-title">
+												<span class="m-portlet__head-icon m--hide">
+													
+												</span>
+												
+												<h2 class="m-portlet__head-label m-portlet__head-label--info">
+													<span>
+														제목
+													</span>
+												</h2>
+											</div>
+										</div>
+										
+									</div>
+									<div class="m-portlet__body">
 	<div class="container">
 		<form id="detail" action="${pageContext.request.contextPath }/approval/approve.do" method="post" enctype="multipart/form-data" accept-charset="utf-8">
 			<input type="hidden" name="id" value="${sessionScope.id }">
@@ -285,15 +299,10 @@
 			</table>
 		</form>
 	</div>
-</body>
-<style>
-.rewrite, .resubmit, .approve {
-	width: 32%;
-}
-
-#apvlog {
-  height: 100px;
-  overflow: auto;
-}
-</style>
-</html>
+	
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div> 

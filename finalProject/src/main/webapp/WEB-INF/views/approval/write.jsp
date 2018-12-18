@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>문서 작성</title>
 <style>
 input[type=text] {
 	width: 100%;
@@ -14,35 +10,26 @@ input[type=text] {
 	width: 100%;
 }
 </style>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.js"></script>
-<!-- include libraries(jQuery, bootstrap) -->
-<!-- <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet"> -->
-<!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> -->
-<!-- <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> -->
-<!-- include summernote css/js -->
-<!-- <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css" rel="stylesheet"> -->
-<!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script> -->
 <script>
 	var $$ = jQuery.noConflict();
 </script>
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
-	$.note = function() {
-		$$("#content").summernote({
-			tabsize : 2,
-			height : 500,
-			width : '100%',
-			minHeight : null,
-			maxHeight : null,
-			focus : true,
-			disableResizeEditor : true
-		});
-	}
-
 	var $ = jQuery.noConflict();
 	$(document).ready(function() {
+		$.note = function() {
+			$$("#content").summernote({
+				tabsize : 2,
+				height : 500,
+				width : '100%',
+				minHeight : null,
+				maxHeight : null,
+				focus : true,
+				disableResizeEditor : true
+			});
+		}
 		$.note();
 		
 		var newWin;
@@ -52,7 +39,7 @@ input[type=text] {
 			success : function(data) {
 				var list = eval("(" + data + ")");
 				var str = "<table style='width: 100%;'><caption><h4>문서 양식</h4></caption><tr>";
-				str += "<td colspan='4' align='right'><a href='${pageContext.request.contextPath }/main?sub=/approval/addDocument'>문서 양식 추가</a></td></tr>";
+				str += "<td colspan='4' align='right'><a href='${pageContext.request.contextPath }/approval/addDocument'>문서 양식 추가</a></td></tr>";
 				str += "<tr><td colspan='4'><br/></td></tr>";
 				if (list.length < 1) {
 					str += "<tr><td colspan='4'>빈 목록입니다.</td></tr><tr>";
@@ -112,46 +99,59 @@ input[type=text] {
 
 	});
 </script>
-</head>
-<body>
-	<table>
-		<tr><td>
-				<a href="${pageContext.request.contextPath }/main?sub=/approval/approve">결재문서</a>
-			</td></tr>
-		<tr><td>
-				<a href="${pageContext.request.contextPath }/main?sub=/approval/write">문서작성</a>
-			</td></tr>
-		<tr><td>
-				<a href="${pageContext.request.contextPath }/main?sub=/approval/docsManage">문서양식관리</a>
-			</td></tr>
-	</table>
-	<form id="apv" action="${pageContext.request.contextPath }/approval/write.do" method="post" enctype="multipart/form-data" accept-charset="utf-8">
-		<div class="container">
-			<table class="table" style="max-width: 900px;">
-				<tr><td colspan="4" id="docsList"></td></tr>
-				<tr><th style="text-align: center; height: 30px">문서명 :</th>
-					<td>
-						<input type="text" name="title" placeholder=" 제목을 작성해주세요.">
-					</td>
-					<td colspan="2" align="right">
-						<input type="hidden" name="id" value="${sessionScope.id }">
-						<input type="hidden" name="apv_set_num" value="1">
-						<input type="button" id="write" value="문서 작성">
-					</td></tr>
-				<tr><th style="text-align: center; height: 30px">1차승인 :</th>
-					<td>
-						<input type="text" class="apv_id" name="mid_id" readonly>
-					</td>
-					<th style="text-align: center; height: 30px">2차승인 :</th>
-					<td>
-						<input type="text" class="apv_id" name="fnl_id" readonly>
-					</td></tr>
-				<tr><td colspan="4">
-						<textArea id="content" name="content"></textArea>
-					</td></tr>
-			</table>
-		</div>
-	</form>
-	<input type="hidden" id="selectedId">
-</body>
-</html>
+<div class="m-grid__item m-grid__item--fluid m-wrapper">
+					<div class="m-content">
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="m-portlet m-portlet--creative m-portlet--first m-portlet--bordered-semi">
+									<div class="m-portlet__head">
+										<div class="m-portlet__head-caption">
+											<div class="m-portlet__head-title">
+												<span class="m-portlet__head-icon m--hide">
+													
+												</span>
+												
+												<h2 class="m-portlet__head-label m-portlet__head-label--info">
+													<span>
+														결재문서작성
+													</span>
+												</h2>
+											</div>
+										</div>
+										
+									</div>
+									<div class="m-portlet__body">
+									<form id="apv" action="${pageContext.request.contextPath }/approval/write.do" method="post" enctype="multipart/form-data" accept-charset="utf-8">
+										<div class="container">
+											<table class="table" style="max-width: 900px;">
+												<tr><td colspan="4" id="docsList"></td></tr>
+												<tr><th style="text-align: center; height: 30px">문서명 :</th>
+													<td>
+														<input type="text" name="title" placeholder=" 제목을 작성해주세요.">
+													</td>
+													<td colspan="2" align="right">
+														<input type="hidden" name="id" value="${sessionScope.id }">
+														<input type="hidden" name="apv_set_num" value="1">
+														<input type="button" id="write" value="문서 작성">
+													</td></tr>
+												<tr><th style="text-align: center; height: 30px">1차승인 :</th>
+													<td>
+														<input type="text" class="apv_id" name="mid_id" readonly>
+													</td>
+													<th style="text-align: center; height: 30px">2차승인 :</th>
+													<td>
+														<input type="text" class="apv_id" name="fnl_id" readonly>
+													</td></tr>
+												<tr><td colspan="4">
+														<textArea id="content" name="content"></textArea>
+													</td></tr>
+											</table>
+										</div>
+									</form>
+									<input type="hidden" id="selectedId">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div> 

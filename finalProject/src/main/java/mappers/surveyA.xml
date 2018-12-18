@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.erp.surveyA.SurveyADao">
+
+<resultMap id="surveyAResult" type="com.project.erp.surveyA.SurveyA">
+		<result column="snum" property="snum" />
+		<result column="title" property="title" />
+		<result column="registdate" property="registdate" />
+		<result column="modifydate" property="modifydate" />
+		<result column="startdate" property="startdate" />
+		<result column="enddate" property="enddate" />
+		<result column="progress" property="progress" />
+		<result column="parent" property="parent" />
+		<result column="qnum" property="qnum" />
+		<result column="question" property="question" />
+		<result column="atype" property="atype" />
+		<result column="attach" property="attach" />
+		<result column="snum_multiple" property="snum_multiple" />
+		<result column="qnum_multiple" property="qnum_multiple" />
+		<result column="rnum" property="rnum" />
+		<result column="responddate" property="responddate" />
+		<result column="mnum" property="mnum" />
+		<result column="mtext" property="mtext" />
+		<result column="shortanswer" property="shortanswer" />
+		<result column="longanswer" property="longanswer" />
+		<result column="id" property="id" />
+	</resultMap>
+		
+	<insert id="insert" parameterType="com.project.erp.surveyA.SurveyA">
+		insert into final_answer values(#{snum_answer}, #{qnum_answer}, #{anum}, sysdate, #{cnum}, #{multiplechoice}, #{shortanswer}, #{longanswer}, #{id})
+	</insert>
+	
+	<select id="selectByParent" resultMap="surveyAResult">
+		select * from final_survey s inner join final_question q on s.snum = q.parent 
+		inner join final_multiplechoice m on m.snum_multiple = q.parent where q.parent=#{q.parent} 
+<!-- 		q.qnum={q.qnum} -->
+	</select>
+	
+		<select id="selectByQnum" resultMap="surveyAResult">
+		select * from final_survey s inner join final_question q on s.snum = q.parent 
+		inner join final_multiplechoice m on m.snum_multiple = q.parent where q.qnum=#{q.qnum}
+	</select>
+	
+	 <!-- 
+	<update id="update" parameterType="com.project.erp.surveyQ.SurveyQ">
+		update question set qtext=#{qtext}, atype=#{atype}, attach=#{attach}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete question where qnum=#{qnum}
+	</delete>
+	
+	<select id="selectBySnum" resultMap="surveyAResult">
+		select * from question where parent=#{snum}
+	</select>-->
+	
+ 	<!--<select id="selectAll" resultMap="surveyAResult">
+ 	select * from survey s inner join question q on s.snum = q.parent
+ 	inner join multiplechoice m on m.snum_multiple = q.parent
+ 		select * from survey s join question q on s.snum = q.parent where s.snum=#{snum} 
+	</select>-->
+	
+</mapper>

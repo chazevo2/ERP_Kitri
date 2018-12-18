@@ -30,8 +30,8 @@ public class DocController {
 	}
 	
 	@RequestMapping("/approval/addDocument")
-	public void addDocument() {
-
+	public String addDocument() {
+		return "approval/addDocument.admin";
 	}
 	
 	@RequestMapping("/approval/saveDocument")
@@ -59,8 +59,7 @@ public class DocController {
 		d.setTitle(title);
 		d.setPath("/documents/" + filename);
 		service.addDocument(d);
-		ModelAndView mav = new ModelAndView("Main");
-		mav.addObject("sub", "/approval/write");
+		ModelAndView mav = new ModelAndView("redirect:/approval/write");
 		return mav;
 	}
 	
@@ -73,9 +72,10 @@ public class DocController {
 	}
 	
 	@RequestMapping("/approval/docsManage")
-	public void docsManage(Model m) {
+	public String docsManage(Model m) {
 		ArrayList<Document> list = service.getAll();
 		m.addAttribute("list", list);
+		return "approval/docsManage.admin";
 	}
 	
 	@RequestMapping("/approval/docSave")
@@ -100,8 +100,7 @@ public class DocController {
 		}
 		
 		service.editDocument(d);
-		ModelAndView mav = new ModelAndView("Main");
-		mav.addObject("sub", "/approval/docsManage");
+		ModelAndView mav = new ModelAndView("redirect:/approval/docsManage");
 		return mav;
 	}
 	
@@ -113,8 +112,7 @@ public class DocController {
 		file.delete();
 		
 		service.delDocument(d.getNum());
-		ModelAndView mav = new ModelAndView("Main");
-		mav.addObject("sub", "/approval/docsManage");
+		ModelAndView mav = new ModelAndView("redirect:/approval/docsManage");
 		return mav;
 	}
 }

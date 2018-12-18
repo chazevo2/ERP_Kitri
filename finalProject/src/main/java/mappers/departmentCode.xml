@@ -9,18 +9,22 @@
 	 	<result column="name" property="name"/>	
 	 </resultMap>
 	 <insert id="insert" parameterType="com.project.erp.departmentCode.DepartmentCode">
-	 	insert into final_departmentCode values(final_departmentCode_seq.nextval, #{name})
+	 	insert into final_departmentcode values(final_departmentCode_seq.nextval, #{name})
 	 </insert>
 	 
 	  <select id="selectByNum" parameterType="int" resultMap="departmentCodeResult">
-	 	select * from final_departmentCode where num=#{num}
+	 	select * from final_departmentcode where num=#{num}
 	 </select>
 	 
 	 <select id="selectByName" parameterType="String" resultMap="departmentCodeResult">
-	 	select * from final_departmentCode where name=#{name}
+	 	select * from final_departmentcode where name=#{name}
 	 </select>
 	 
 	 <select id="selectAll" resultMap="departmentCodeResult">
-	 	select * from final_departmentCode 
+	 	select * from final_departmentcode order by num asc
 	 </select>
+	 
+	 <update id="update" parameterType="com.project.erp.departmentCode.DepartmentCode">
+	 	update final_departmentcode set name=#{name} where num=#{num}
+	 </update>
 	</mapper>

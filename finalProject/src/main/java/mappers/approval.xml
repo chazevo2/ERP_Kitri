@@ -26,7 +26,7 @@
 	</select>
 	
 	<select id="selectById" parameterType="String" resultMap="apvResult">
-		select * from final_approval where id=#{id} or (mid_id=#{id} and apv_set_num = 1) or (fnl_id=#{id} and apv_set_num = 2) order by num desc
+		select * from final_approval where id=#{id} or mid_id=#{id} or fnl_id=#{id} order by num desc
 	</select>
 	
 	<select id="selectAll" resultMap="apvResult">

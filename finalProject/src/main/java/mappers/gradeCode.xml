@@ -10,18 +10,23 @@
 	 </resultMap>
 	 
 	 <insert id="insert" parameterType="com.project.erp.gradeCode.GradeCode">
-	 	insert into final_gradeCode values(#{num}, #{name})
+	 	insert into final_gradecode values(#{num}, #{name})
 	 </insert>
 	 
 	  <select id="selectByNum" parameterType="String" resultMap="gradeCodeResult">
-	 	select * from final_gradeCode where num=#{num}
+	 	select * from final_gradecode where num=#{num}
 	 </select>
 	 
 	 <select id="selectByName" parameterType="String" resultMap="gradeCodeResult">
-	 	select * from final_gradeCode where name=#{name}
+	 	select * from final_gradecode where name=#{name}
 	 </select>
 	 
 	 <select id="selectAll" resultMap="gradeCodeResult">
-	 	select * from final_gradeCode
+	 	select * from final_gradecode order by num
 	 </select>
+	 
+	 <update id="update" parameterType="com.project.erp.gradeCode.GradeCode">
+	 	update final_gradecode set name=#{name} where num=#{num}
+	 </update>
+	 
 	</mapper>

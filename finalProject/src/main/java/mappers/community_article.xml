@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	 <mapper namespace="com.project.erp.community_article.CommArticleDao">
+	 
+	 <resultMap id="communityarticleResult" type="com.project.erp.community_article.Community_Article"> 
+	 	<result column="num" property="num"/>
+	 	<result column="writer" property="writer"/>
+	 	<result column="content" property="content"/>
+	 	<result column="w_date" property="w_date"/>
+	 	<result column="comm_num" property="comm_num"/>
+	 </resultMap>
+	 
+	 <insert id="insert" parameterType="com.project.erp.community_article.Community_Article">
+	 	insert into final_community_article values(final_community_article_seq.nextval, #{writer}, #{content}, sysdate, #{comm_num})
+	 </insert>
+	 
+	 <update id="update" parameterType="com.project.erp.community_article.Community_Article">
+	 	update final_community_article set content=#{content}, w_date=sysdate where num=#{num}
+	 </update>
+	 
+	 <delete id="delete" parameterType="int">
+	 	delete from final_community_article where num= #{num}
+	 </delete>
+	 
+	 <select id="selectAll" resultMap="communityarticleResult">
+	 	select * from final_community_article
+	 </select>
+	 
+	 <select id="selectByCommNum" parameterType="int" resultMap="communityarticleResult">
+	 	select * from final_community_article where comm_num = #{comm_num}
+	 </select>
+	 
+	</mapper>

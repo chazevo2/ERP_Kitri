@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+	<definition name="admin" template="/WEB-INF/views/common/admin-layout.jsp">
+		<put-attribute name="head" value="/WEB-INF/views/common/admin-head.jsp"/>
+		<put-attribute name="header" value="/WEB-INF/views/common/admin-header.jsp"/>
+		<put-attribute name="nav" value="/WEB-INF/views/common/admin-nav.jsp"/>
+		<put-attribute name="content" />
+	</definition>
+	<definition name="*/*.admin" extends="admin">
+		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp"/>
+	</definition>
+	<!-- <definition name="*/*/*.admin" extends="admin">
+		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}/{3}.jsp"/>
+	</definition> -->
+</tiles-definitions>

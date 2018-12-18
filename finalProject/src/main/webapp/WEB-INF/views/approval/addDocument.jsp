@@ -1,14 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="euc-kr">
-<title>문서양식 추가</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <style>
 #file {
 	display: none;
@@ -24,19 +16,18 @@ input[type=text] {
 <script>
 	var $$ = jQuery.noConflict();
 </script>
-<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
-	$.note = function() {
-		$$("#content").summernote({
-			tabsize : 2,
-			height : 700,
-			width : '100%',
-			minHeight : null,
-			maxHeight : null,
-			focus : true
-		});
-	}
 	$(document).ready(function() {
+		$.note = function() {
+			$$("#content").summernote({
+				tabsize : 2,
+				height : 700,
+				width : '100%',
+				minHeight : null,
+				maxHeight : null,
+				focus : true
+			});
+		}
 		$.note();
 
 		$("#upload").click(function() {
@@ -87,39 +78,55 @@ input[type=text] {
 		reader.readAsText(blob, "utf-8");
 	}
 </script>
-</head>
-<body>
-	<table>
-		<tr><td>
-				<a href="${pageContext.request.contextPath }/main?sub=/approval/approve">결재문서</a>
-			</td></tr>
-		<tr><td>
-				<a href="${pageContext.request.contextPath }/main?sub=/approval/write">문서작성</a>
-			</td></tr>
-		<tr><td>
-				<a href="${pageContext.request.contextPath }/main?sub=/approval/docsManage">문서양식관리</a>
-			</td></tr>
-	</table>
-	<form id="doc" action="${pageContext.request.contextPath }/approval/saveDocument" method="post" enctype="multipart/form-data" accept-charset="utf-8">
-		<div class="container">
-			<table class="table table-hover" style="max-width: 900px;">
-				<tr><th style="text-align: center; height: 30px">파일명</th>
-					<td>
-						<input type="text" name="title">
-					</td>
-					<td>
-						<input type="button" id="save" value="문서양식 저장">
-					</td>
-					<td align="right">
-						<input type="file" id="file" accept="text/html" />
-						<input type="button" id="upload" value="내 컴퓨터 파일 추가">
-					</td></tr>
-				<tr><th>문서내용</th>
-					<td colspan="3">
-						<textArea id="content" name="content"></textArea>
-					</td></tr>
-			</table>
-		</div>
-	</form>
-</body>
-</html>
+	
+
+	
+	 <div class="m-grid__item m-grid__item--fluid m-wrapper">
+					<div class="m-content">
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="m-portlet m-portlet--creative m-portlet--first m-portlet--bordered-semi">
+									<div class="m-portlet__head">
+										<div class="m-portlet__head-caption">
+											<div class="m-portlet__head-title">
+												<span class="m-portlet__head-icon m--hide">
+													
+												</span>
+												
+												<h2 class="m-portlet__head-label m-portlet__head-label--info">
+													<span>
+														문서양식작성
+													</span>
+												</h2>
+											</div>
+										</div>
+										
+									</div>
+									<div class="m-portlet__body">
+										<form id="doc" action="${pageContext.request.contextPath }/approval/saveDocument" method="post" enctype="multipart/form-data" accept-charset="utf-8">
+											<div class="container">
+												<table class="table table-hover" style="max-width: 900px;">
+													<tr><th style="text-align: center; height: 30px">파일명</th>
+														<td>
+															<input type="text" name="title">
+														</td>
+														<td>
+															<input type="button" id="save" value="문서양식 저장">
+														</td>
+														<td align="right">
+															<input type="file" id="file" accept="text/html" />
+															<input type="button" id="upload" value="내 컴퓨터 파일 추가">
+														</td></tr>
+													<tr><th>문서내용</th>
+														<td colspan="3">
+															<textArea id="content" name="content"></textArea>
+														</td></tr>
+												</table>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div> 

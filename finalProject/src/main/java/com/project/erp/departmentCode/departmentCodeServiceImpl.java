@@ -23,6 +23,13 @@ public class departmentCodeServiceImpl implements departmentCodeService {
 		dao.insert(d);
 	}
 	@Override
+	public void edit(DepartmentCode d) {
+		// TODO Auto-generated method stub
+		dao=sqlSession.getMapper(departmentCodeDao.class);
+		dao.update(d);
+	}
+	
+	@Override
 	public DepartmentCode getInfoByNum(int num) {
 		// TODO Auto-generated method stub
 		dao=sqlSession.getMapper(departmentCodeDao.class);

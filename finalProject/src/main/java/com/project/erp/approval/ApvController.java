@@ -25,15 +25,15 @@ import org.springframework.web.servlet.ModelAndView;
 public class ApvController {
 	@Resource(name = "apvService")
 	private Service service;
-	private String defaultPath = "D:\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\approvals\\";
+	private String defaultPath = "D:\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\webapps\\documents\\";
 
 	public void setService(Service service) {
 		this.service = service;
 	}
 
 	@RequestMapping("/approval/write")
-	public void write() {
-
+	public String write() {
+		return "approval/write.admin";
 	}
 
 	@RequestMapping("/approval/write.do")
@@ -66,26 +66,27 @@ public class ApvController {
 
 		a.setPath("/approvals/" + filename1);
 		a.setLog("/approvals/" + filename2);
-		System.out.println(a);
 		service.addApv(a);
-		ModelAndView mav = new ModelAndView("Main");
-		mav.addObject("sub", "/approval/approve");
+		ModelAndView mav = new ModelAndView("redirect:/approval/approve");
 		return mav;
 	}
+	
+	@RequestMapping("/approval/approve")
+	public String approve(HttpServletRequest req, Model m) {
+		HttpSession session = req.getSession(false);
+		String id = (String) session.getAttribute("id");
+		ArrayList<Approval> list = service.getById(id);
+		m.addAttribute("list", list);
+		return "approval/approve.admin";
+	}
+
 
 	@RequestMapping("/approval/getApvId")
 	public void getApvId() {
 
 	}
 
-	@RequestMapping("/approval/approve")
-	public void approve(HttpServletRequest req, Model m) {
-		HttpSession session = req.getSession(false);
-		String id = (String) session.getAttribute("id");
-		ArrayList<Approval> list = service.getById(id);
-		m.addAttribute("list", list);
-	}
-
+	
 	@RequestMapping("/approval/apvList")
 	public ModelAndView apvList(HttpServletRequest req) {
 		ModelAndView mav = new ModelAndView("/approval/apvJson");
@@ -98,10 +99,12 @@ public class ApvController {
 	}
 
 	@RequestMapping("/approval/detail")
-	public void detail(@RequestParam(value = "num") int num, Model m) {
+	public String detail(@RequestParam(value = "num") int num, Model m) {
 		Approval approval = service.getApv(num);
 		m.addAttribute("approval", approval);
+		return "approval/detail.admin";
 	}
+	
 
 	@RequestMapping("/approval/approve.do")
 	public ModelAndView approve(Approval a, @RequestParam(value = "content") String content) {
@@ -144,8 +147,7 @@ public class ApvController {
 		}
 		service.editApv(a);
 
-		ModelAndView mav = new ModelAndView("Main");
-		mav.addObject("sub", "/approval/approve");
+		ModelAndView mav = new ModelAndView("redirect:/approval/approve");
 		return mav;
 	}
 

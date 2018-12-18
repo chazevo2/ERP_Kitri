@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.erp.notice.noticeDao">
+	<resultMap id="NoticeResult"
+		type="com.project.erp.notice.Notice">
+		<result column="num" property="num" />
+		<result column="w_date" property="w_date" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+		<result column="writer" property="writer" />
+		<result column="view_count" property="view_count" />
+	</resultMap>
+	<insert id="insert"
+		parameterType="com.project.erp.notice.Notice">
+		insert into final_notice
+		values(final_notice_seq.nextval,sysdate,#{title},#{content},#{writer},0)
+	</insert>
+
+	<update id="update"
+		parameterType="com.project.erp.notice.Notice">
+		update final_notice set title=#{title}, content=#{content},
+		w_date=sysdate where num=#{num}
+	</update>
+	<update id="count"
+		parameterType="com.project.erp.notice.Notice">
+		update final_notice set view_count=view_count+1 where num=#{num}
+	</update>
+<!-- 	cascade??? -->
+	<delete id="delete" parameterType="int">
+		delete final_notice where num=#{num} 
+	</delete>
+	<select id="selectByNum" parameterType="int" resultMap="NoticeResult">
+		select * from final_notice where num=#{num} order by num
+	</select>
+	<select id="selectAll" resultMap="NoticeResult">
+		select * from final_notice order by num desc
+	</select>
+	<select id="selectByTitle" parameterType="String"
+		resultMap="NoticeResult">
+		select * from final_notice where title like  '%'|| #{title} ||'%' order by num desc
+	</select>
+		<select id="selectByWriter" parameterType="String"
+		resultMap="NoticeResult">
+		select * from final_notice where like writer '%'|| #{writer} ||'%' order by num desc
+	</select>
+		<select id="selectByContent" parameterType="String"
+		resultMap="NoticeResult">
+		select * from final_notice where like content '%'|| #{content} ||'%' order by num desc
+	</select>
+</mapper>

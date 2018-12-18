@@ -6,7 +6,6 @@
 <title>문서양식 관리</title>
 <meta charset="EUC-KR">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!-- summer note -->
@@ -16,19 +15,19 @@
 <script>
 	var $$ = jQuery.noConflict();
 </script>
-<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
-	$.note = function() {
-		$$("#content").summernote({
-			tabsize : 2,
-			height : 700,
-			width : '100%',
-			minHeight : null,
-			maxHeight : null,
-			focus : true
-		});
-	}
+
 	$(document).ready(function() {
+		$.note = function() {
+			$$("#content").summernote({
+				tabsize : 2,
+				height : 700,
+				width : '100%',
+				minHeight : null,
+				maxHeight : null,
+				focus : true
+			});
+		}
 		$.note();
 		$$('#content').summernote('disable');
 
@@ -100,25 +99,34 @@
 		});
 	});
 </script>
-</head>
-<body>
-	<table>
-		<tr><td>
-				<a href="${pageContext.request.contextPath }/main?sub=/approval/approve">결재문서</a>
-			</td></tr>
-		<tr><td>
-				<a href="${pageContext.request.contextPath }/main?sub=/approval/write">문서작성</a>
-			</td></tr>
-		<tr><td>
-				<a href="${pageContext.request.contextPath }/main?sub=/approval/docsManage">문서양식관리</a>
-			</td></tr>
-	</table>
-	<div class="container">
+<div class="m-grid__item m-grid__item--fluid m-wrapper">
+					<div class="m-content">
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="m-portlet m-portlet--creative m-portlet--first m-portlet--bordered-semi">
+									<div class="m-portlet__head">
+										<div class="m-portlet__head-caption">
+											<div class="m-portlet__head-title">
+												<span class="m-portlet__head-icon m--hide">
+													
+												</span>
+												
+												<h2 class="m-portlet__head-label m-portlet__head-label--info">
+													<span>
+													 	문서양식관리
+													</span>
+												</h2>
+											</div>
+										</div>
+										
+									</div>
+									<div class="m-portlet__body">
+										<div class="container">
 		<form id="docs" action="${pageContext.request.contextPath }/approval/docSave" method="post" enctype="multipart/form-data" accept-charset="utf-8">
 			<table class="table" style="max-width: 1000px;">
 				<tr><td colspan="2" style="text-align: right;">
 						<input type="text" name="title" style="display: none">
-						<input type="button" value="추가" onclick="location.href='${pageContext.request.contextPath }/main?sub=/approval/addDocument'">
+						<input type="button" value="추가" onclick="location.href='${pageContext.request.contextPath }/approval/addDocument'">
 						<input id="rewrite" type="button" value="수정">
 						<input id="save" type="button" value="저장" style="display: none;">
 						<input id="del" type="button" value="삭제" style="display: none;">
@@ -141,5 +149,9 @@
 			</table>
 		</form>
 	</div>
-</body>
-</html>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div> 

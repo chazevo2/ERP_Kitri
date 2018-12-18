@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.erp.mail.mailDao">
+
+<resultMap id="mailResult" type="com.project.erp.mail.Mail">
+		<result column="num" property="num" />
+		<result column="sendEmail" property="sendEmail" />
+		<result column="title" property="title" />
+		<result column="getEmail" property="getEmail" />
+		<result column="content" property="content" />
+		<result column="read" property="read" />
+	</resultMap>
+	
+	<insert id="insert" parameterType="com.project.erp.mail.Mail">
+		insert into final_chat values(final_chat_seq.nextval, #{sendEmail}, #{title}, #{getEmail}, #{content}, 'n')
+	</insert>
+	
+	<update id="update" parameterType="com.project.erp.mail.Mail">
+		update final_chat set read=#{read} where num=#{num}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete final_chat where num=#{num}
+	</delete>
+	
+	<select id="select" parameterType="int" resultMap="mailResult">
+		select * from final_chat where num=#{num}
+	</select>
+	
+	<select id="selectAll" parameterType="String" resultMap="mailResult">
+		select * from final_chat where getEmail=#{getEmail} order by num desc
+	</select>
+	
+</mapper>
