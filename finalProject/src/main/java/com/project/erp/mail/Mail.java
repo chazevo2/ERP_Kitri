@@ -7,9 +7,8 @@ public class Mail {
 	private String getEmail;
 	private String content;
 	private String read;
-	
+
 	public Mail() {
-		
 	}
 
 	public Mail(int num, String sendEmail, String title, String getEmail, String content, String read) {
@@ -71,7 +70,6 @@ public class Mail {
 
 	@Override
 	public String toString() {
-		return "Chat [num=" + num + ", sendEmail=" + sendEmail + ", title=" + title + ", getEmail=" + getEmail
-				+ ", content=" + content + ", read=" + read + "]";
+		return "Chat [num=" + num + ", sendEmail=" + sendEmail + ", title=" + title + ", getEmail=" + getEmail + ", content=" + content + ", read=" + read + "]";
 	}
 }

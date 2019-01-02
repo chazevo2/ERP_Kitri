@@ -15,10 +15,10 @@ public class ApvSetController {
 	public void setService(Service service) {
 		this.service = service;
 	}
-	
+
 	// 기안자 정보
 	@RequestMapping("/approval/getSet")
-	public ModelAndView getSet(@RequestParam(value="set") int set) {
+	public ModelAndView getSet(@RequestParam(value = "set") int set) {
 		ModelAndView mav = new ModelAndView("/approval/setJson");
 		Apv_set apv_set = service.getSet(set);
 		mav.addObject("apv_set", apv_set);

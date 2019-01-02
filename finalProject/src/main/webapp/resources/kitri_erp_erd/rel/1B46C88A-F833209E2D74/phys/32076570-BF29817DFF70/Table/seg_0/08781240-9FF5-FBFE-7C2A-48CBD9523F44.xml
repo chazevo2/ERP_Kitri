@@ -1,0 +1,39 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.TableProxyOraclev11g" name="FINAL_GRADECODE" directorySegmentName="seg_0" id="08781240-9FF5-FBFE-7C2A-48CBD9523F44">
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+<schemaObject>33DDDE3A-C625-AAE2-A8CD-FC87DD0EAB5F</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>BCF9A1C6-9B9C-92EE-DE29-D2824642792D</segment>
+<tableSpace>CDEDECF3-C2DF-2EC5-7101-5906697A053A</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="NUM" id="23B3FDDB-5E99-F0A0-7F8D-BB47C47A1315">
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="NAME" id="265D3774-C71D-8AA1-43D0-2C4013D13D04">
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="FINAL_GRADECODE_PK" id="48ECF300-1BCD-0525-46BB-9E779995B0CC">
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+<schemaObject>33DDDE3A-C625-AAE2-A8CD-FC87DD0EAB5F</schemaObject>
+<segment>D771B621-CE14-0C5A-1AD6-E85C96B122F2</segment>
+<tableSpace>CDEDECF3-C2DF-2EC5-7101-5906697A053A</tableSpace>
+<indexSegment>D771B621-CE14-0C5A-1AD6-E85C96B122F2</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev11g>

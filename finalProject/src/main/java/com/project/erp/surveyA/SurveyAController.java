@@ -25,11 +25,11 @@ public class SurveyAController {
 
 	@RequestMapping("/surveyA/answerForm1")
 	public ModelAndView answerForm1() {
-		ModelAndView mav = new ModelAndView("Main");// 고정
-		mav.addObject("sub", "/surveyA/respond");// "/survey/addForm" 가고싶은 url
+		ModelAndView mav = new ModelAndView("Main");
+		mav.addObject("sub", "/surveyA/respond");
 		return mav;
 	}
-	
+
 	@RequestMapping("/surveyA/respond")
 	public ModelAndView respond(@RequestParam(value = "parent") int parent) {
 		ArrayList<SurveyA> list = service.getByParent(parent);
@@ -38,15 +38,7 @@ public class SurveyAController {
 		mav.addObject("list", list);
 		return mav;
 	}
-	
-//	@RequestMapping("/surveyA/questionJson")
-//	public ModelAndView test(@RequestParam(value = "parent") int parent) {
-//		ArrayList<SurveyA> list = service.getByParent(parent);
-//		ModelAndView mav = new ModelAndView("/surveyA/questionJson");
-//		mav.addObject("list", list);
-//		return mav;
-//	}
-//	
+
 	@RequestMapping("/surveyA/questionJson")
 	public ModelAndView test(@RequestParam(value = "qnum_multiple") int qnum_multiple) {
 		ArrayList<SurveyA> listQ = service.getByQnum(qnum_multiple);
@@ -54,14 +46,13 @@ public class SurveyAController {
 		mav.addObject("listQ", listQ);
 		return mav;
 	}
-	
+
 	@RequestMapping("/surveyA/add")
 	public ModelAndView add(SurveyA a) {
 		service.add(a);
-		ModelAndView mav = new ModelAndView("Main");// 고정
-		mav.addObject("sub", "/surveyQ/list");// "/survey/addForm" 가고싶은 url
+		ModelAndView mav = new ModelAndView("Main");
+		mav.addObject("sub", "/surveyQ/list");
 		return mav;
-		
 	}
 
 }

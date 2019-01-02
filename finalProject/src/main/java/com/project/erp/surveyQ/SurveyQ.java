@@ -21,8 +21,7 @@ public class SurveyQ {
 	public SurveyQ() {
 	}
 
-	public SurveyQ(int snum, String title, Date registdate, Date modifydate, Date startdate, Date enddate, int parent,
-			int qnum, String question, String atype, int snum_multiple, int qnum_multiple, int mnum, String mtext) {
+	public SurveyQ(int snum, String title, Date registdate, Date modifydate, Date startdate, Date enddate, int parent, int qnum, String question, String atype, int snum_multiple, int qnum_multiple, int mnum, String mtext) {
 		this.snum = snum;
 		this.title = title;
 		this.registdate = registdate;
@@ -153,10 +152,7 @@ public class SurveyQ {
 
 	@Override
 	public String toString() {
-		return "SurveyQ [snum=" + snum + ", title=" + title + ", registdate=" + registdate + ", modifydate="
-				+ modifydate + ", startdate=" + startdate + ", enddate=" + enddate + ", parent=" + parent + ", qnum="
-				+ qnum + ", question=" + question + ", atype=" + atype + ", snum_multiple=" + snum_multiple
-				+ ", qnum_multiple=" + qnum_multiple + ", mnum=" + mnum + ", mtext=" + mtext + "]";
+		return "SurveyQ [snum=" + snum + ", title=" + title + ", registdate=" + registdate + ", modifydate=" + modifydate + ", startdate=" + startdate + ", enddate=" + enddate + ", parent=" + parent + ", qnum=" + qnum + ", question=" + question + ", atype=" + atype + ", snum_multiple=" + snum_multiple + ", qnum_multiple=" + qnum_multiple + ", mnum=" + mnum + ", mtext=" + mtext + "]";
 	}
 
 }

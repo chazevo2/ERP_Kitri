@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
-<head>
-<title>문서양식 관리</title>
 <meta charset="EUC-KR">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -16,7 +13,6 @@
 	var $$ = jQuery.noConflict();
 </script>
 <script>
-
 	$(document).ready(function() {
 		$.note = function() {
 			$$("#content").summernote({
@@ -100,58 +96,52 @@
 	});
 </script>
 <div class="m-grid__item m-grid__item--fluid m-wrapper">
-					<div class="m-content">
-						<div class="row">
-							<div class="col-lg-12">
-								<div class="m-portlet m-portlet--creative m-portlet--first m-portlet--bordered-semi">
-									<div class="m-portlet__head">
-										<div class="m-portlet__head-caption">
-											<div class="m-portlet__head-title">
-												<span class="m-portlet__head-icon m--hide">
-													
-												</span>
-												
-												<h2 class="m-portlet__head-label m-portlet__head-label--info">
-													<span>
-													 	문서양식관리
-													</span>
-												</h2>
-											</div>
-										</div>
-										
-									</div>
-									<div class="m-portlet__body">
-										<div class="container">
-		<form id="docs" action="${pageContext.request.contextPath }/approval/docSave" method="post" enctype="multipart/form-data" accept-charset="utf-8">
-			<table class="table" style="max-width: 1000px;">
-				<tr><td colspan="2" style="text-align: right;">
-						<input type="text" name="title" style="display: none">
-						<input type="button" value="추가" onclick="location.href='${pageContext.request.contextPath }/approval/addDocument'">
-						<input id="rewrite" type="button" value="수정">
-						<input id="save" type="button" value="저장" style="display: none;">
-						<input id="del" type="button" value="삭제" style="display: none;">
-						<input id="cancel" type="button" value="취소" style="display: none;">
-					</td></tr>
-				<tr><td>
-						<table class="table table-hover">
-							<c:forEach var="d" items="${list }" varStatus="status">
-								<c:if test="${status.first }">
-									<input type="hidden" name="num" value="${d.num }">
-									<input type="hidden" name="path" value="${d.path }">
-								</c:if>
-								<tr><th class="select" data-num="${d.num }" data-path="${d.path }">${d.title }</th></tr>
-							</c:forEach>
-						</table>
-					</td>
-					<td>
-						<textArea id="content" name="content"></textArea>
-					</td></tr>
-			</table>
-		</form>
-	</div>
-									</div>
-								</div>
+	<div class="m-content">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="m-portlet m-portlet--creative m-portlet--first m-portlet--bordered-semi">
+					<div class="m-portlet__head">
+						<div class="m-portlet__head-caption">
+							<div class="m-portlet__head-title">
+								<span class="m-portlet__head-icon m--hide"> </span>
+								<h2 class="m-portlet__head-label m-portlet__head-label--info">
+									<span> 문서양식관리 </span>
+								</h2>
 							</div>
 						</div>
 					</div>
-				</div> 
+					<div class="m-portlet__body">
+						<div class="container">
+							<form id="docs" action="${pageContext.request.contextPath }/approval/docSave" method="post" enctype="multipart/form-data" accept-charset="utf-8">
+								<table class="table" style="max-width: 1000px;">
+									<tr><td colspan="2" style="text-align: right;">
+											<input type="text" name="title" style="display: none">
+											<input type="button" value="추가" onclick="location.href='${pageContext.request.contextPath }/approval/addDocument'" class="btn btn-secondary">
+											<input id="rewrite" type="button" value="수정" class="btn btn-secondary">
+											<input id="save" type="button" value="저장" style="display: none;" class="btn btn-secondary">
+											<input id="del" type="button" value="삭제" style="display: none;" class="btn btn-secondary">
+											<input id="cancel" type="button" value="취소" style="display: none;" class="btn btn-secondary">
+										</td></tr>
+									<tr><td>
+											<table class="table table-hover">
+												<c:forEach var="d" items="${list }" varStatus="status">
+													<c:if test="${status.first }">
+														<input type="hidden" name="num" value="${d.num }">
+														<input type="hidden" name="path" value="${d.path }">
+													</c:if>
+													<tr><th class="select" data-num="${d.num }" data-path="${d.path }">${d.title }</th></tr>
+												</c:forEach>
+											</table>
+										</td>
+										<td>
+											<textArea id="content" name="content"></textArea>
+										</td></tr>
+								</table>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

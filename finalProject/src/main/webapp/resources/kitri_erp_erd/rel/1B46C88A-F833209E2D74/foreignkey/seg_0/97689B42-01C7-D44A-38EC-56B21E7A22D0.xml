@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="97689B42-01C7-D44A-38EC-56B21E7A22D0" containerWithKeyObject="173A890A-8FE6-5EEB-349C-02CD13EDA126" localFKIndex="31BE79C6-52D4-C739-018B-D85A7E36563A" name="SYS_C009424">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>SYS_C009424</sourceObjName>
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+<referredTableLongName>HR.FINAL_MEMBER</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>4D55CBDB-D746-883B-D020-00967C3235A4</referredTableID>
+<keyObject>234AAF17-F29F-8BFD-F86B-94D3480495FD</keyObject>
+<referredKeyID>234AAF17-F29F-8BFD-F86B-94D3480495FD</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>EMAIL</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

@@ -13,6 +13,9 @@ DocController 에서   폴더 documents 만들고 경로 붙여넣는다
 4.문서결재 할때는 문서대장의 파일을 불러온다.
 따로 전달파일
 
+5.웹뷰에 common폴더에 navi jsp열면 상단에 var ws = new WebSocket("ws://192.168.12.29:8080/erp/echo-ws");
+본인아이피 넣기
+
 */
 
 drop table final_approval;
@@ -36,6 +39,7 @@ drop table final_multiplechoice;
 drop table final_question;
 drop table final_survey;
 drop sequence final_survey_seq;
+drop sequence final_question_seq;
 
 drop table final_chat;
 drop sequence final_chat_seq;
@@ -92,7 +96,7 @@ create table final_chat(
 	sendEmail varchar2(50) not null references final_member(email),
 	title varchar2(2000) not null,
 	getEmail varchar2(50) not null references final_member(email),
-	content varchar2(2000) not null,
+	content clob not null,
 	read varchar2(50) not null
 );
 create sequence final_chat_seq nocache;
@@ -213,7 +217,7 @@ enddate date
 );
 
 ---서베이 시퀀스
-create sequence final_survey_seq;
+create sequence final_survey_seq nocache;
 
 ---question 질의
 create table final_question(
@@ -222,6 +226,9 @@ qnum number primary key,
 question varchar2(200),
 atype varchar2(50)
 );
+
+---서베이 시퀀스
+create sequence final_question_seq nocache;
 
 ---multiplechoice 객관식
 create table final_multiplechoice(

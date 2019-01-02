@@ -18,11 +18,10 @@
 			minHeight : null,
 			maxHeight : null,
 			focus : true,
-			disableResizeEditor: true
+			disableResizeEditor : true
 		});
 	});
 </script>
-
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
 	var $ = jQuery.noConflict();
@@ -82,7 +81,7 @@
 				$("#apvlog").html(str);
 			});
 		}
-		
+
 		$(".rewrite").click(function() {
 			var r = confirm("정말 수정하시겠습니까?");
 			if (r == true) {
@@ -130,179 +129,174 @@
 }
 
 #apvlog {
-  max-height: 100px;
-  overflow: auto;
+	max-height: 100px;
+	overflow: auto;
 }
 </style>
-	 <div class="m-grid__item m-grid__item--fluid m-wrapper">
-					<div class="m-content">
-						<div class="row">
-							<div class="col-lg-12">
-								<div class="m-portlet m-portlet--creative m-portlet--first m-portlet--bordered-semi">
-									<div class="m-portlet__head">
-										<div class="m-portlet__head-caption">
-											<div class="m-portlet__head-title">
-												<span class="m-portlet__head-icon m--hide">
-													
-												</span>
-												
-												<h2 class="m-portlet__head-label m-portlet__head-label--info">
-													<span>
-														제목
-													</span>
-												</h2>
-											</div>
-										</div>
-										
-									</div>
-									<div class="m-portlet__body">
-	<div class="container">
-		<form id="detail" action="${pageContext.request.contextPath }/approval/approve.do" method="post" enctype="multipart/form-data" accept-charset="utf-8">
-			<input type="hidden" name="id" value="${sessionScope.id }">
-			<table class="table" style="max-width: 1000px;">
-				<c:set var="a" value="${approval }" />
-				<tr><th>문서 번호</th>
-					<td>
-						<input type="hidden" name="num" value="${a.num }">${a.num }</td>
-					<th>문서 제목</th>
-					<td>${a.title }</td></tr>
-				<tr><th>작성자</th>
-					<c:if test="${!empty a.id }">
-						<td id="${a.id }">${a.id }</td>
-						<script>
-							$(document).ready(function() {
-								var id = '${a.id }';
-								if (id != "") {
-									$.getName(id);
-								}
-							});
-						</script>
-					</c:if>
-					<th>작성일</th>
-					<td>${a.apv_date }</td></tr>
-				<tr><th>결재자(1차)</th>
-					<c:choose>
-						<c:when test="${!empty a.mid_id }">
-							<td id="${a.mid_id }">${a.mid_id }</td>
-							<script>
-								$(document).ready(function() {
-									var id = '${a.mid_id }';
-									if (id != "") {
-										$.getName(id);
-									}
-								});
-							</script>
-						</c:when>
-						<c:otherwise>
-							<td>미지정</td>
-						</c:otherwise>
-					</c:choose>
-					<th>
-						결재 상태
-						<input type="hidden" name="apv_set_num">
-					</th>
-					<c:if test="${!empty a.apv_set_num }">
-						<td id="${a.apv_set_num }">${a.apv_set_num }</td>
-						<script>
-							$(document).ready(function() {
-								var set = '${a.apv_set_num }';
-								if (set != "") {
-									$.getSet(set);
-								}
-							});
-						</script>
-					</c:if>
-				</tr>
-				<tr><th>결재자(2차)</th>
-					<c:choose>
-						<c:when test="${!empty a.fnl_id }">
-							<td id="${a.fnl_id }">${a.fnl_id }</td>
-							<script>
-								$(document).ready(function() {
-									var id = '${a.fnl_id }';
-									if (id != "") {
-										$.getName(id);
-									}
-								});
-							</script>
-						</c:when>
-						<c:otherwise>
-							<td>미지정</td>
-						</c:otherwise>
-					</c:choose>
-					<%-- 1 제출 2 승인 3 반려 4 승인 5 반려 6 반려/거부 --%>
-					<td colspan="2" style="text-align:right;">
-						<c:set var="id" value='${sessionScope.id }' />
-						<c:choose>
-							<c:when test="${a.id eq id }">
-								<%-- 제출, 승인, 거부 / 반려 --%>
-								<c:if test="${a.apv_set_num eq 3 || a.apv_set_num eq 5 }">
-									<input class="rewrite" type="button" value="수정">
-									<input class="resubmit" type="button" value="재기안" data-num="1" style="display: none;">
-								</c:if>
-							</c:when>
-							<c:when test="${a.mid_id eq id }">
-								<%-- 승인해야함 --%>
-								<c:if test="${a.apv_set_num eq 1 }">
-									<c:choose>
-										<c:when test="${!empty a.fnl_id }">
-											<input class="approve" type="button" value="승인" data-num="2">
-											<input class="approve" type="button" value="반려" data-num="3">
-										</c:when>
-										<c:otherwise>
-											<input class="approve" type="button" value="승인" data-num="4">
-											<input class="approve" type="button" value="반려" data-num="5">
-										</c:otherwise>
-									</c:choose>
-									<input class="approve" type="button" value="반려/거부" data-num="6">
-									<script>
-										$(document).ready(function() {
-											$("#view").show();
-										});
-									</script>
-								</c:if>
-							</c:when>
-							<c:when test="${a.fnl_id eq id }">
-								<%-- 2승인 --%>
-								<c:if test="${a.apv_set_num eq 2 }">
-									<input class="approve" type="button" value="승인" data-num="4">
-									<input class="approve" type="button" value="반려" data-num="5">
-									<input class="approve" type="button" value="반려/거부" data-num="6">
-									<script>
-										$(document).ready(function() {
-											$("#view").show();
-										});
-									</script>
-								</c:if>
-							</c:when>
-							<c:otherwise>
-								권한없음
-							</c:otherwise>
-						</c:choose>
-					</td>
-				</tr>
-				<tr id="view" style="display: none;"><th>의견</th>
-					<td colspan="3">
-						<input id="comment" name="rejection" type="text" style="width: 100%;" placeholder="의견을 작성해주세요.">
-					</td></tr>
-				<tr><th>
-						결재로그
-						<input type="hidden" id="log" name="log" value="${a.log }">
-					</th>
-					<td colspan="3"><div id="apvlog"></div></td></tr>
-				<tr></tr>
-				<tr><th>문서 내용</th>
-					<td colspan="3">
-						<input type="hidden" id="path" name="path" value="${a.path }">
-						<textArea id="content" name="content"></textArea>
-					</td></tr>
-			</table>
-		</form>
-	</div>
-	
-									</div>
-								</div>
+<div class="m-grid__item m-grid__item--fluid m-wrapper">
+	<div class="m-content">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="m-portlet m-portlet--creative m-portlet--first m-portlet--bordered-semi">
+					<div class="m-portlet__head">
+						<div class="m-portlet__head-caption">
+							<div class="m-portlet__head-title">
+								<span class="m-portlet__head-icon m--hide"> </span>
+								<h2 class="m-portlet__head-label m-portlet__head-label--info">
+									<span> 결재문서 상세보기 </span>
+								</h2>
 							</div>
 						</div>
 					</div>
-				</div> 
+					<div class="m-portlet__body">
+						<div class="container">
+							<form id="detail" action="${pageContext.request.contextPath }/approval/approve.do" method="post" enctype="multipart/form-data" accept-charset="utf-8">
+								<input type="hidden" name="id" value="${sessionScope.id }">
+								<table class="table" style="max-width: 1000px;">
+									<c:set var="a" value="${approval }" />
+									<tr><th>문서 번호</th>
+										<td>
+											<input type="hidden" name="num" value="${a.num }">${a.num }</td>
+										<th>문서 제목</th>
+										<td>${a.title }</td></tr>
+									<tr><th>작성자</th>
+										<c:if test="${!empty a.id }">
+											<td id="${a.id }">${a.id }</td>
+											<script>
+												$(document).ready(function() {
+													var id = '${a.id }';
+													if (id != "") {
+														$.getName(id);
+													}
+												});
+											</script>
+										</c:if>
+										<th>작성일</th>
+										<td>${a.apv_date }</td></tr>
+									<tr><th>결재자(1차)</th>
+										<c:choose>
+											<c:when test="${!empty a.mid_id }">
+												<td id="${a.mid_id }">${a.mid_id }</td>
+												<script>
+													$(document).ready(function() {
+														var id = '${a.mid_id }';
+														if (id != "") {
+															$.getName(id);
+														}
+													});
+												</script>
+											</c:when>
+											<c:otherwise>
+												<td>미지정</td>
+											</c:otherwise>
+										</c:choose>
+										<th>
+											결재 상태
+											<input type="hidden" name="apv_set_num">
+										</th>
+										<c:if test="${!empty a.apv_set_num }">
+											<td id="${a.apv_set_num }">${a.apv_set_num }</td>
+											<script>
+												$(document).ready(function() {
+													var set = '${a.apv_set_num }';
+													if (set != "") {
+														$.getSet(set);
+													}
+												});
+											</script>
+										</c:if>
+									</tr>
+									<tr><th>결재자(2차)</th>
+										<c:choose>
+											<c:when test="${!empty a.fnl_id }">
+												<td id="${a.fnl_id }">${a.fnl_id }</td>
+												<script>
+													$(document).ready(function() {
+														var id = '${a.fnl_id }';
+														if (id != "") {
+															$.getName(id);
+														}
+													});
+												</script>
+											</c:when>
+											<c:otherwise>
+												<td>미지정</td>
+											</c:otherwise>
+										</c:choose>
+										<%-- 1 제출 2 승인 3 반려 4 승인 5 반려 6 반려/거부 --%>
+										<td colspan="2" style="text-align: right;">
+											<c:set var="id" value='${sessionScope.id }' />
+											<c:choose>
+												<c:when test="${a.id eq id }">
+													<%-- 제출, 승인, 거부 / 반려 --%>
+													<c:if test="${a.apv_set_num eq 3 || a.apv_set_num eq 5 }">
+														<input class="rewrite" type="button" value="수정" class="btn btn-secondary">
+														<input class="resubmit" type="button" value="재기안" data-num="1" style="display: none;" class="btn btn-secondary">
+													</c:if>
+												</c:when>
+												<c:when test="${a.mid_id eq id }">
+													<%-- 승인해야함 --%>
+													<c:if test="${a.apv_set_num eq 1 }">
+														<c:choose>
+															<c:when test="${!empty a.fnl_id }">
+																<input class="approve" type="button" value="승인" data-num="2" class="btn btn-secondary">
+																<input class="approve" type="button" value="반려" data-num="3" class="btn btn-secondary">
+															</c:when>
+															<c:otherwise>
+																<input class="approve" type="button" value="승인" data-num="4" class="btn btn-secondary">
+																<input class="approve" type="button" value="반려" data-num="5" class="btn btn-secondary">
+															</c:otherwise>
+														</c:choose>
+														<input class="approve" type="button" value="반려/거부" data-num="6" class="btn btn-secondary">
+														<script>
+															$(document).ready(function() {
+																$("#view").show();
+															});
+														</script>
+													</c:if>
+												</c:when>
+												<c:when test="${a.fnl_id eq id }">
+													<%-- 2승인 --%>
+													<c:if test="${a.apv_set_num eq 2 }">
+														<input class="approve" type="button" value="승인" data-num="4" class="btn btn-secondary">
+														<input class="approve" type="button" value="반려" data-num="5" class="btn btn-secondary">
+														<input class="approve" type="button" value="반려/거부" data-num="6" class="btn btn-secondary">
+														<script>
+															$(document).ready(function() {
+																$("#view").show();
+															});
+														</script>
+													</c:if>
+												</c:when>
+												<c:otherwise>
+													권한없음
+												</c:otherwise>
+											</c:choose>
+										</td>
+									</tr>
+									<tr id="view" style="display: none;"><th>의견</th>
+										<td colspan="3">
+											<input id="comment" name="rejection" type="text" style="width: 100%;" placeholder="의견을 작성해주세요.">
+										</td></tr>
+									<tr><th>
+											결재로그
+											<input type="hidden" id="log" name="log" value="${a.log }">
+										</th>
+										<td colspan="3">
+											<div id="apvlog"></div>
+										</td></tr>
+									<tr></tr>
+									<tr><th>문서 내용</th>
+										<td colspan="3">
+											<input type="hidden" id="path" name="path" value="${a.path }">
+											<textArea id="content" name="content"></textArea>
+										</td></tr>
+								</table>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

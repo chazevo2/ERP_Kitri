@@ -17,8 +17,7 @@ public class Community {
 	public Community() {
 	}
 
-	public Community(int num, String title, String content, String writer, String location, Date w_date, int nop,
-			int maxnop, int clickcnt, String attandant) {
+	public Community(int num, String title, String content, String writer, String location, Date w_date, int nop, int maxnop, int clickcnt, String attandant) {
 		this.num = num;
 		this.title = title;
 		this.content = content;
@@ -113,11 +112,7 @@ public class Community {
 
 	@Override
 	public String toString() {
-		return "Community [num=" + num + ", title=" + title + ", content=" + content + ", writer=" + writer
-				+ ", location=" + location + ", w_date=" + w_date + ", nop=" + nop + ", maxnop=" + maxnop
-				+ ", clickcnt=" + clickcnt + ", attandant=" + attandant + "]";
+		return "Community [num=" + num + ", title=" + title + ", content=" + content + ", writer=" + writer + ", location=" + location + ", w_date=" + w_date + ", nop=" + nop + ", maxnop=" + maxnop + ", clickcnt=" + clickcnt + ", attandant=" + attandant + "]";
 	}
 
-	
-	
 }

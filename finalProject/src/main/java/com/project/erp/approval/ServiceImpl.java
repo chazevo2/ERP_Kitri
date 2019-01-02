@@ -30,7 +30,7 @@ public class ServiceImpl implements Service {
 		dao = sqlSession.getMapper(Dao.class);
 		return dao.select(num);
 	}
-	
+
 	@Override
 	public ArrayList<Approval> getById(String id) {
 		// TODO Auto-generated method stub

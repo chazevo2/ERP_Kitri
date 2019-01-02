@@ -24,8 +24,8 @@
 	<insert id="insert" parameterType="com.project.erp.surveyQ.SurveyQ">
 		insert all
 		into final_survey values(final_survey_seq.nextval, #{title}, sysdate, null, #{startdate}, #{enddate})
-		into final_question values(final_survey_seq.currval, question_seq.nextval, #{question}, #{atype})
-		into final_multiplechoice values(final_survey_seq.currval, question_seq.currval, #{mnum}, #{mtext})
+		into final_question values(final_survey_seq.currval, final_question_seq.nextval, #{question}, #{atype})
+		into final_multiplechoice values(final_survey_seq.currval, final_question_seq.currval, #{mnum}, #{mtext})
 		select * from dual
 	</insert>
 	

@@ -9,11 +9,10 @@ public class Notice {
 	private String content;
 	private String writer;
 	private int view_count;
-	
+
 	public Notice() {
-		
 	}
-	
+
 	public Notice(int num, Date w_date, String title, String content, String writer, int view_count) {
 		this.num = num;
 		this.w_date = w_date;
@@ -73,11 +72,7 @@ public class Notice {
 
 	@Override
 	public String toString() {
-		return "Notice [num=" + num + ", w_date=" + w_date + ", title=" + title + ", content=" + content + ", writer="
-				+ writer + ", view_count=" + view_count + "]";
+		return "Notice [num=" + num + ", w_date=" + w_date + ", title=" + title + ", content=" + content + ", writer=" + writer + ", view_count=" + view_count + "]";
 	}
 
-	
-	
-	
 }

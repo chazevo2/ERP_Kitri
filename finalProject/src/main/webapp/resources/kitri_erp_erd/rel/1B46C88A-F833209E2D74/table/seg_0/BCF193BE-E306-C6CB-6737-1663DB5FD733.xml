@@ -1,0 +1,127 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="BCF193BE-E306-C6CB-6737-1663DB5FD733" schemaObject="33DDDE3A-C625-AAE2-A8CD-FC87DD0EAB5F" name="FINAL_NOTICE">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>FINAL_NOTICE</sourceObjName>
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="NUM" id="C338A703-3E5B-9D4E-D252-FCD6780563F8">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>FINAL_NOTICE</sourceObjSchema>
+<sourceObjName>NUM</sourceObjName>
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="W_DATE" id="2CF4909D-369E-63C8-E1A0-145CB84883FD">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>FINAL_NOTICE</sourceObjSchema>
+<sourceObjName>W_DATE</sourceObjName>
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TITLE" id="C836B610-9FF9-758B-7021-B2A6D28261F2">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>FINAL_NOTICE</sourceObjSchema>
+<sourceObjName>TITLE</sourceObjName>
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>500 BYTE</dataTypeSize>
+<ownDataTypeParameters>500 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CONTENT" id="1025C34B-062C-35B5-C7F3-00560654AD76">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>FINAL_NOTICE</sourceObjSchema>
+<sourceObjName>CONTENT</sourceObjName>
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1000 BYTE</dataTypeSize>
+<ownDataTypeParameters>1000 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="WRITER" id="794AF41C-AF31-B10F-CE5F-AF36E54144E4">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>FINAL_NOTICE</sourceObjSchema>
+<sourceObjName>WRITER</sourceObjName>
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F7AB65E1-65FF-83F1-76BE-62607E91A2F1" referredColumn="AEE5ACBC-EB8A-24E3-A51A-7ABB72C8661B"/>
+</associations>
+</Column>
+<Column name="VIEW_COUNT" id="50C224E3-E27F-8B62-C679-A13804D0E562">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>FINAL_NOTICE</sourceObjSchema>
+<sourceObjName>VIEW_COUNT</sourceObjName>
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="2A75044C-1B0C-D838-7754-2529DD607B59" schemaObject="33DDDE3A-C625-AAE2-A8CD-FC87DD0EAB5F" name="FINAL_NOTICE_PK">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>SYS_C009452</sourceObjName>
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C338A703-3E5B-9D4E-D252-FCD6780563F8"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="532554FB-1099-2787-140B-469681259A15" name="SYS_C009453">
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="794AF41C-AF31-B10F-CE5F-AF36E54144E4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

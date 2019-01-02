@@ -1,0 +1,106 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.TableProxyOraclev11g" name="FINAL_COMMUNITY" directorySegmentName="seg_0" id="503D03DD-4705-FE08-0685-1B8B9222C56A">
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+<schemaObject>33DDDE3A-C625-AAE2-A8CD-FC87DD0EAB5F</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>BCF9A1C6-9B9C-92EE-DE29-D2824642792D</segment>
+<tableSpace>CDEDECF3-C2DF-2EC5-7101-5906697A053A</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="WRITER" id="2BD3306B-DDB2-D072-2E45-D0A443786393">
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="LOCATION" id="31ACFA79-8738-9E39-2414-A1B05C9ED505">
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ATTANDANT" id="467FB6CF-DC9B-91C9-9F44-5CD1A6F5E316">
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+<defaultValue>null</defaultValue>
+</ColumnProxy>
+<ColumnProxy name="NUM" id="745FD98D-7744-0C98-7DAA-043BB359B945">
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="CONTENT" id="764C496C-B484-A301-B6B1-6B8D7FFD0FFB">
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="W_DATE" id="771F401D-DD82-66D6-0A50-A221B6FD0FA1">
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="CLICKCNT" id="C4008AF3-801D-D603-92B2-47C295408F6F">
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+<defaultValue>0</defaultValue>
+</ColumnProxy>
+<ColumnProxy name="NOP" id="F0827A57-C67A-5FF7-080D-5389F13E16EB">
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+<defaultValue>5</defaultValue>
+</ColumnProxy>
+<ColumnProxy name="TITLE" id="F8773327-BC56-7550-F6F3-213408059395">
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="SYS_C009444" id="ABA5DD20-B4AB-A433-F8A8-A5B93B8F24B1">
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<lobStorages>
+<LobStorage class="oracle.dbtools.crest.model.design.storage.oracle.v11g.LobStorageOraclev11g" name="SYS_LOB0000029902C00003$$" id="8191D6AC-D4A8-E186-FF01-091C42BB3074">
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+<cache>NOCACHE</cache>
+<chunk>8192</chunk>
+<column>CONTENT</column>
+<logging>YES</logging>
+<tableSpace>CDEDECF3-C2DF-2EC5-7101-5906697A053A</tableSpace>
+</LobStorage>
+<LobStorage class="oracle.dbtools.crest.model.design.storage.oracle.v11g.LobStorageOraclev11g" name="SYS_LOB0000029902C00009$$" id="BEC34B7A-F6C3-26C6-8496-5E8D5FC8D9B3">
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+<cache>NOCACHE</cache>
+<chunk>8192</chunk>
+<column>ATTANDANT</column>
+<logging>YES</logging>
+<tableSpace>CDEDECF3-C2DF-2EC5-7101-5906697A053A</tableSpace>
+</LobStorage>
+</lobStorages>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="FINAL_COMMUNITY_PK" id="D2C800F9-6F91-90F4-A1DE-F7817B2A12C5">
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+<schemaObject>33DDDE3A-C625-AAE2-A8CD-FC87DD0EAB5F</schemaObject>
+<segment>D771B621-CE14-0C5A-1AD6-E85C96B122F2</segment>
+<tableSpace>CDEDECF3-C2DF-2EC5-7101-5906697A053A</tableSpace>
+<indexSegment>D771B621-CE14-0C5A-1AD6-E85C96B122F2</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev11g>

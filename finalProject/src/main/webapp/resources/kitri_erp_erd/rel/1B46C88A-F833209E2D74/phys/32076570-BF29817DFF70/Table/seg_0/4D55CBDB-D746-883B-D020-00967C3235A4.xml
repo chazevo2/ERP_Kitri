@@ -1,0 +1,114 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.TableProxyOraclev11g" name="FINAL_MEMBER" directorySegmentName="seg_0" id="4D55CBDB-D746-883B-D020-00967C3235A4">
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+<schemaObject>33DDDE3A-C625-AAE2-A8CD-FC87DD0EAB5F</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>BCF9A1C6-9B9C-92EE-DE29-D2824642792D</segment>
+<tableSpace>CDEDECF3-C2DF-2EC5-7101-5906697A053A</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="PWD" id="0BF70CD1-CB8E-A631-40E4-9F96532CB36F">
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="EMAIL" id="0E0BC818-3713-7EBE-4197-3553B68454CB">
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="GRADECODE" id="156789DE-0470-FBF8-54F4-2E9B0DE3F5A3">
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="CONFIRM" id="27B2C2B2-C8FF-BA75-3F18-35155B776EB8">
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ADDRESS" id="6172F8EB-E898-99DA-5382-2249B0B8C822">
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="DEPARTMENTCODE" id="66CAAB49-A809-02C0-A1AB-158641215E65">
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="PICTURE" id="86880933-A1AF-242A-33E7-71685B67BC13">
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="HIREDATE" id="93BED932-2016-335E-8F82-E17A68AC5F5C">
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="FIREDATE" id="9CF79FD2-ADF5-68DA-283E-0B3A2A89F1E8">
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="HP" id="9DF5008D-B215-CF69-3446-8D6E0B0C5B1B">
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ID" id="AEE5ACBC-EB8A-24E3-A51A-7ABB72C8661B">
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="NAME" id="C01679E5-908A-F77A-1665-8BB342CE0011">
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="SYS_C009416" id="708C78B5-EDB8-6CC2-EA8F-AC2623F96E92">
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="SYS_C009417" id="D17B77C3-0445-2945-904F-5F0C37AB0B35">
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="FINAL_MEMBER_PK" id="95C9B33B-3F19-A0FC-A127-0FE3706B19AC">
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+<schemaObject>33DDDE3A-C625-AAE2-A8CD-FC87DD0EAB5F</schemaObject>
+<segment>D771B621-CE14-0C5A-1AD6-E85C96B122F2</segment>
+<tableSpace>CDEDECF3-C2DF-2EC5-7101-5906697A053A</tableSpace>
+<indexSegment>D771B621-CE14-0C5A-1AD6-E85C96B122F2</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+<uniqueKeys>
+<UniqueKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.UniqueOraclev10g" name="FINAL_MEMBER_EMAIL_UN" id="234AAF17-F29F-8BFD-F86B-94D3480495FD">
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+<schemaObject>33DDDE3A-C625-AAE2-A8CD-FC87DD0EAB5F</schemaObject>
+<segment>D771B621-CE14-0C5A-1AD6-E85C96B122F2</segment>
+<tableSpace>CDEDECF3-C2DF-2EC5-7101-5906697A053A</tableSpace>
+<indexSegment>D771B621-CE14-0C5A-1AD6-E85C96B122F2</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</UniqueKey>
+</uniqueKeys>
+</TableProxyOraclev11g>

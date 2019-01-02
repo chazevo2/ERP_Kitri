@@ -24,28 +24,27 @@ public class SurveyQServiceImpl implements SurveyQService {
 		dao = sqlSession.getMapper(SurveyQDao.class);
 		dao.insert(q);
 	}
-	
+
 	@Override
 	public void addS(SurveyQ q) {
 		// TODO Auto-generated method stub
 		dao = sqlSession.getMapper(SurveyQDao.class);
 		dao.insertS(q);
 	}
-	
+
 	@Override
 	public void addQ(SurveyQ q) {
 		// TODO Auto-generated method stub
 		dao = sqlSession.getMapper(SurveyQDao.class);
 		dao.insertQ(q);
 	}
-	
+
 	@Override
 	public void addM(SurveyQ q) {
 		// TODO Auto-generated method stub
 		dao = sqlSession.getMapper(SurveyQDao.class);
 		dao.insertM(q);
 	}
-	
 
 	@Override
 	public void edit(SurveyQ q) {

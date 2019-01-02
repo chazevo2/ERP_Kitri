@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="kitri_erp_erd" id="1328E078-3870-B81C-4E93-E5567AAA59D8" version="3.5">
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:21:00 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>1328E078-3870-B81C-4E93-E5567AAA59D8</designId>
+</OSDM_Design>

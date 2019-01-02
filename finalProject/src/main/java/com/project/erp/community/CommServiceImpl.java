@@ -9,10 +9,10 @@ import org.springframework.stereotype.Component;
 
 @Component("communityService")
 public class CommServiceImpl implements CommService {
-	@Resource(name="sqlSession")
+	@Resource(name = "sqlSession")
 	private SqlSession sqlSession;
 	private CommDao dao;
-	
+
 	public void setSqlSession(SqlSession sqlSession) {
 		this.sqlSession = sqlSession;
 	}
@@ -86,6 +86,5 @@ public class CommServiceImpl implements CommService {
 		dao = sqlSession.getMapper(CommDao.class);
 		dao.insertAttandant(c);
 	}
-	
-	
+
 }

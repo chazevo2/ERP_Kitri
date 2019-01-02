@@ -28,9 +28,7 @@ public class SurveyA {
 	public SurveyA() {
 	}
 
-	public SurveyA(int snum, String title, Date registdate, Date modifydate, Date startdate, Date enddate, int parent,
-			int qnum, String question, String atype, int snum_multiple, int qnum_multiple, int rnum, Date responddate,
-			int mnum, String mtext, String shortanswer, String longanswer, String id) {
+	public SurveyA(int snum, String title, Date registdate, Date modifydate, Date startdate, Date enddate, int parent, int qnum, String question, String atype, int snum_multiple, int qnum_multiple, int rnum, Date responddate, int mnum, String mtext, String shortanswer, String longanswer, String id) {
 		super();
 		this.snum = snum;
 		this.title = title;
@@ -207,12 +205,8 @@ public class SurveyA {
 
 	@Override
 	public String toString() {
-		return "SurveyA [snum=" + snum + ", title=" + title + ", registdate=" + registdate + ", modifydate="
-				+ modifydate + ", startdate=" + startdate + ", enddate=" + enddate + ", parent=" + parent + ", qnum="
-				+ qnum + ", question=" + question + ", atype=" + atype + ", snum_multiple=" + snum_multiple
-				+ ", qnum_multiple=" + qnum_multiple + ", rnum=" + rnum + ", responddate=" + responddate + ", mnum="
-				+ mnum + ", mtext=" + mtext + ", shortanswer=" + shortanswer + ", longanswer=" + longanswer + ", id="
-				+ id + "]";
+		return "SurveyA [snum=" + snum + ", title=" + title + ", registdate=" + registdate + ", modifydate=" + modifydate + ", startdate=" + startdate + ", enddate=" + enddate + ", parent=" + parent + ", qnum=" + qnum + ", question=" + question + ", atype=" + atype + ", snum_multiple=" + snum_multiple + ", qnum_multiple=" + qnum_multiple + ", rnum=" + rnum + ", responddate=" + responddate + ", mnum=" + mnum + ", mtext=" + mtext + ", shortanswer=" + shortanswer + ", longanswer=" + longanswer
+				+ ", id=" + id + "]";
 	}
 
 }

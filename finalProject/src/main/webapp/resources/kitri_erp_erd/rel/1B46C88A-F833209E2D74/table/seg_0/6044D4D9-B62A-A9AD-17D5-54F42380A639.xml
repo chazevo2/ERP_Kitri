@@ -1,0 +1,199 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="6044D4D9-B62A-A9AD-17D5-54F42380A639" schemaObject="33DDDE3A-C625-AAE2-A8CD-FC87DD0EAB5F" name="FINAL_APPROVAL">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>FINAL_APPROVAL</sourceObjName>
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="NUM" id="94FEFE4A-1472-DBBA-6202-C9586B92AF8D">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>FINAL_APPROVAL</sourceObjSchema>
+<sourceObjName>NUM</sourceObjName>
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ID" id="8C75E6AE-F580-2880-D51D-5C8857B67609">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>FINAL_APPROVAL</sourceObjSchema>
+<sourceObjName>ID</sourceObjName>
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30 BYTE</dataTypeSize>
+<ownDataTypeParameters>30 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="57A44C0B-477D-3030-823F-9F5EDE907E56" referredColumn="AEE5ACBC-EB8A-24E3-A51A-7ABB72C8661B"/>
+</associations>
+</Column>
+<Column name="MID_ID" id="A8CAEA68-7216-E356-A993-E56A10123ABE">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>FINAL_APPROVAL</sourceObjSchema>
+<sourceObjName>MID_ID</sourceObjName>
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30 BYTE</dataTypeSize>
+<ownDataTypeParameters>30 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FNL_ID" id="DDF65811-4933-B81C-BD2F-BD664054724C">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>FINAL_APPROVAL</sourceObjSchema>
+<sourceObjName>FNL_ID</sourceObjName>
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30 BYTE</dataTypeSize>
+<ownDataTypeParameters>30 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="APV_SET_NUM" id="1B82980E-1393-2A61-4DD7-45D8763F1089">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>FINAL_APPROVAL</sourceObjSchema>
+<sourceObjName>APV_SET_NUM</sourceObjName>
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D0179440-0CEE-6B9A-1923-EC3C26DF057A" referredColumn="30B7BDC6-CBE1-CE8C-F8E6-E3DF043755C8"/>
+</associations>
+</Column>
+<Column name="TITLE" id="BEA51894-ECA3-3608-875E-AE0D2BB705B7">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>FINAL_APPROVAL</sourceObjSchema>
+<sourceObjName>TITLE</sourceObjName>
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="APV_DATE" id="D36262C4-F7C1-C218-C6DA-D0466A2C30E8">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>FINAL_APPROVAL</sourceObjSchema>
+<sourceObjName>APV_DATE</sourceObjName>
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PATH" id="014DFAF2-133F-2F6C-3B45-1B5C3B46067F">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>FINAL_APPROVAL</sourceObjSchema>
+<sourceObjName>PATH</sourceObjName>
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 BYTE</dataTypeSize>
+<ownDataTypeParameters>100 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="REJECTION" id="4688AC07-163A-FFA7-53EE-7172495E6C97">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>FINAL_APPROVAL</sourceObjSchema>
+<sourceObjName>REJECTION</sourceObjName>
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 BYTE</dataTypeSize>
+<ownDataTypeParameters>100 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="LOG" id="738FDEF2-3F3B-AE5E-B552-BB7FF60D81AE">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>FINAL_APPROVAL</sourceObjSchema>
+<sourceObjName>LOG</sourceObjName>
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>500 BYTE</dataTypeSize>
+<ownDataTypeParameters>500 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="BA2DB30B-9D8E-2029-724A-F66ABD97A1E3" schemaObject="33DDDE3A-C625-AAE2-A8CD-FC87DD0EAB5F" name="FINAL_APPROVAL_PK">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>SYS_C009435</sourceObjName>
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="94FEFE4A-1472-DBBA-6202-C9586B92AF8D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F7AFB972-FEBB-EB6A-687C-7650EF01BC72" name="SYS_C009436">
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8C75E6AE-F580-2880-D51D-5C8857B67609"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="11F7F384-DDAB-1D58-22D0-7B5B36A4637E" name="SYS_C009437">
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:25:02 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1B82980E-1393-2A61-4DD7-45D8763F1089"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

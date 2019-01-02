@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.erp.mail.countDao">
+	<resultMap id="countResult" type="com.project.erp.mail.Count">
+		<result column="num" property="num" />
+		<result column="getEmail" property="getEmail" />
+	</resultMap>
+	
+	<select id="select" parameterType="String" resultMap="countResult">
+		select count(num) as num, getEmail from final_chat where getEmail=#{getEmail} and read='n' group by getEmail
+	</select>
+</mapper>

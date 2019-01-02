@@ -31,7 +31,7 @@ input[type=text] {
 			});
 		}
 		$.note();
-		
+
 		var newWin;
 		$.ajax({
 			type : "post",
@@ -45,7 +45,7 @@ input[type=text] {
 					str += "<tr><td colspan='4'>빈 목록입니다.</td></tr><tr>";
 				} else {
 					for (i = 0; i < list.length; i++) {
-						str += "<td style='width: 25%;'><input type='button' class='ex' value='" + list[i].title + "' path='" + list[i].path + "'></td>";
+						str += "<td style='width: 25%;'><input type='button' class='ex btn btn-secondary' value='" + list[i].title + "' path='" + list[i].path + "'></td>";
 						if ((i != 0 && (i + 1) % 4 == 0) || i == list.length - 1) {
 							if (i > 0) {
 								str += "<td colspan=" + (4 - (i + 1) % 4) + "></td>";
@@ -100,58 +100,52 @@ input[type=text] {
 	});
 </script>
 <div class="m-grid__item m-grid__item--fluid m-wrapper">
-					<div class="m-content">
-						<div class="row">
-							<div class="col-lg-12">
-								<div class="m-portlet m-portlet--creative m-portlet--first m-portlet--bordered-semi">
-									<div class="m-portlet__head">
-										<div class="m-portlet__head-caption">
-											<div class="m-portlet__head-title">
-												<span class="m-portlet__head-icon m--hide">
-													
-												</span>
-												
-												<h2 class="m-portlet__head-label m-portlet__head-label--info">
-													<span>
-														결재문서작성
-													</span>
-												</h2>
-											</div>
-										</div>
-										
-									</div>
-									<div class="m-portlet__body">
-									<form id="apv" action="${pageContext.request.contextPath }/approval/write.do" method="post" enctype="multipart/form-data" accept-charset="utf-8">
-										<div class="container">
-											<table class="table" style="max-width: 900px;">
-												<tr><td colspan="4" id="docsList"></td></tr>
-												<tr><th style="text-align: center; height: 30px">문서명 :</th>
-													<td>
-														<input type="text" name="title" placeholder=" 제목을 작성해주세요.">
-													</td>
-													<td colspan="2" align="right">
-														<input type="hidden" name="id" value="${sessionScope.id }">
-														<input type="hidden" name="apv_set_num" value="1">
-														<input type="button" id="write" value="문서 작성">
-													</td></tr>
-												<tr><th style="text-align: center; height: 30px">1차승인 :</th>
-													<td>
-														<input type="text" class="apv_id" name="mid_id" readonly>
-													</td>
-													<th style="text-align: center; height: 30px">2차승인 :</th>
-													<td>
-														<input type="text" class="apv_id" name="fnl_id" readonly>
-													</td></tr>
-												<tr><td colspan="4">
-														<textArea id="content" name="content"></textArea>
-													</td></tr>
-											</table>
-										</div>
-									</form>
-									<input type="hidden" id="selectedId">
-									</div>
-								</div>
+	<div class="m-content">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="m-portlet m-portlet--creative m-portlet--first m-portlet--bordered-semi">
+					<div class="m-portlet__head">
+						<div class="m-portlet__head-caption">
+							<div class="m-portlet__head-title">
+								<span class="m-portlet__head-icon m--hide"> </span>
+								<h2 class="m-portlet__head-label m-portlet__head-label--info">
+									<span> 결재문서작성 </span>
+								</h2>
 							</div>
 						</div>
 					</div>
-				</div> 
+					<div class="m-portlet__body">
+						<form id="apv" action="${pageContext.request.contextPath }/approval/write.do" method="post" enctype="multipart/form-data" accept-charset="utf-8">
+							<div class="container">
+								<table class="table" style="max-width: 900px;">
+									<tr><td colspan="4" id="docsList"></td></tr>
+									<tr><th style="text-align: center; height: 30px">문서명 :</th>
+										<td>
+											<input type="text" name="title" placeholder=" 제목을 작성해주세요.">
+										</td>
+										<td colspan="2" align="right">
+											<input type="hidden" name="id" value="${sessionScope.id }">
+											<input type="hidden" name="apv_set_num" value="1">
+											<input type="button" id="write" value="문서 작성" class="btn btn-secondary">
+										</td></tr>
+									<tr><th style="text-align: center; height: 30px">1차승인 :</th>
+										<td>
+											<input type="text" class="apv_id" name="mid_id" readonly>
+										</td>
+										<th style="text-align: center; height: 30px">2차승인 :</th>
+										<td>
+											<input type="text" class="apv_id" name="fnl_id" readonly>
+										</td></tr>
+									<tr><td colspan="4">
+											<textArea id="content" name="content"></textArea>
+										</td></tr>
+								</table>
+							</div>
+						</form>
+						<input type="hidden" id="selectedId">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

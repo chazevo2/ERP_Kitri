@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<LogicalDesign class="oracle.dbtools.crest.model.design.logical.LogicalDesign" name="Logical" id="7B4AEF58-107B-847A-F236-85BCFC2C0E92" mainViewID="29728E32-FDDD-E3AA-33F8-D76720D083E5">
+<createdBy>John</createdBy>
+<createdTime>2018-12-17 16:21:00 UTC</createdTime>
+<ownerDesignName>kitri_erp_erd</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</LogicalDesign>

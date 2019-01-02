@@ -53,7 +53,7 @@ input[type=text] {
 			} else {
 				$.note();
 				return;
-			}	
+			}
 		});
 	});
 
@@ -78,55 +78,46 @@ input[type=text] {
 		reader.readAsText(blob, "utf-8");
 	}
 </script>
-	
-
-	
-	 <div class="m-grid__item m-grid__item--fluid m-wrapper">
-					<div class="m-content">
-						<div class="row">
-							<div class="col-lg-12">
-								<div class="m-portlet m-portlet--creative m-portlet--first m-portlet--bordered-semi">
-									<div class="m-portlet__head">
-										<div class="m-portlet__head-caption">
-											<div class="m-portlet__head-title">
-												<span class="m-portlet__head-icon m--hide">
-													
-												</span>
-												
-												<h2 class="m-portlet__head-label m-portlet__head-label--info">
-													<span>
-														문서양식작성
-													</span>
-												</h2>
-											</div>
-										</div>
-										
-									</div>
-									<div class="m-portlet__body">
-										<form id="doc" action="${pageContext.request.contextPath }/approval/saveDocument" method="post" enctype="multipart/form-data" accept-charset="utf-8">
-											<div class="container">
-												<table class="table table-hover" style="max-width: 900px;">
-													<tr><th style="text-align: center; height: 30px">파일명</th>
-														<td>
-															<input type="text" name="title">
-														</td>
-														<td>
-															<input type="button" id="save" value="문서양식 저장">
-														</td>
-														<td align="right">
-															<input type="file" id="file" accept="text/html" />
-															<input type="button" id="upload" value="내 컴퓨터 파일 추가">
-														</td></tr>
-													<tr><th>문서내용</th>
-														<td colspan="3">
-															<textArea id="content" name="content"></textArea>
-														</td></tr>
-												</table>
-											</div>
-										</form>
-									</div>
-								</div>
+<div class="m-grid__item m-grid__item--fluid m-wrapper">
+	<div class="m-content">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="m-portlet m-portlet--creative m-portlet--first m-portlet--bordered-semi">
+					<div class="m-portlet__head">
+						<div class="m-portlet__head-caption">
+							<div class="m-portlet__head-title">
+								<span class="m-portlet__head-icon m--hide"> </span>
+								<h2 class="m-portlet__head-label m-portlet__head-label--info">
+									<span> 문서양식작성 </span>
+								</h2>
 							</div>
 						</div>
 					</div>
-				</div> 
+					<div class="m-portlet__body">
+						<form id="doc" action="${pageContext.request.contextPath }/approval/saveDocument" method="post" enctype="multipart/form-data" accept-charset="utf-8">
+							<div class="container">
+								<table class="table table-hover" style="max-width: 900px;">
+									<tr><th style="text-align: center; height: 30px">파일명</th>
+										<td>
+											<input type="text" name="title">
+										</td>
+										<td>
+											<input type="button" id="save" value="문서양식 저장">
+										</td>
+										<td align="right">
+											<input type="file" id="file" accept="text/html" />
+											<input type="button" id="upload" value="내 컴퓨터 파일 추가">
+										</td></tr>
+									<tr><th>문서내용</th>
+										<td colspan="3">
+											<textArea id="content" name="content"></textArea>
+										</td></tr>
+								</table>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

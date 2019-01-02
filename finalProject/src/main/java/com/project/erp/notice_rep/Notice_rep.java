@@ -8,13 +8,12 @@ public class Notice_rep {
 	private String writer;
 	private String content;
 	private int n_num;
-	
+
 	public Notice_rep() {
-		
 	}
 
 	public Notice_rep(int num, Date w_date, String writer, String content, int n_num) {
-		
+
 		this.num = num;
 		this.w_date = w_date;
 		this.writer = writer;
@@ -64,9 +63,7 @@ public class Notice_rep {
 
 	@Override
 	public String toString() {
-		return "Notice_rep [num=" + num + ", w_date=" + w_date + ", writer=" + writer + ", content=" + content
-				+ ", n_num=" + n_num + "]";
+		return "Notice_rep [num=" + num + ", w_date=" + w_date + ", writer=" + writer + ", content=" + content + ", n_num=" + n_num + "]";
 	}
-
 
 }

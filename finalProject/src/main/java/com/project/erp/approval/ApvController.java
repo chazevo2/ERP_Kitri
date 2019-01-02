@@ -70,7 +70,7 @@ public class ApvController {
 		ModelAndView mav = new ModelAndView("redirect:/approval/approve");
 		return mav;
 	}
-	
+
 	@RequestMapping("/approval/approve")
 	public String approve(HttpServletRequest req, Model m) {
 		HttpSession session = req.getSession(false);
@@ -80,13 +80,11 @@ public class ApvController {
 		return "approval/approve.admin";
 	}
 
-
 	@RequestMapping("/approval/getApvId")
 	public void getApvId() {
 
 	}
 
-	
 	@RequestMapping("/approval/apvList")
 	public ModelAndView apvList(HttpServletRequest req) {
 		ModelAndView mav = new ModelAndView("/approval/apvJson");
@@ -94,7 +92,6 @@ public class ApvController {
 		String id = (String) session.getAttribute("id");
 		ArrayList<Approval> list = service.getById(id);
 		mav.addObject("list", list);
-		System.out.println(list);
 		return mav;
 	}
 
@@ -104,7 +101,6 @@ public class ApvController {
 		m.addAttribute("approval", approval);
 		return "approval/detail.admin";
 	}
-	
 
 	@RequestMapping("/approval/approve.do")
 	public ModelAndView approve(Approval a, @RequestParam(value = "content") String content) {

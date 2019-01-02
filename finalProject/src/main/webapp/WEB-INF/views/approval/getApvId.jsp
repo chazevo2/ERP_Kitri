@@ -81,7 +81,7 @@
 
 						$(".select").on("click", function() {
 							var id = $(this).find("td").eq(1).html();
-							if($("input[name=mid_id]", opener.document).val() == id) {
+							if ($("input[name=mid_id]", opener.document).val() == id) {
 								alert("잘못된 접근입니다.");
 								return;
 							} else {
@@ -126,7 +126,7 @@
 	<input type="hidden" id="selectApv">
 	<h3>결재자 이름 검색</h3>
 	<input type="text" id="name">
-	<input type="button" id="search" value="검색">
+	<input type="button" id="search" value="검색" class="btn btn-secondary">
 	<h4>검색 결과</h4>
 	<div id="result"></div>
 </body>

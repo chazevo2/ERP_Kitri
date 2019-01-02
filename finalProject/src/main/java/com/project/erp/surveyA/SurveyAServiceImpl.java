@@ -16,13 +16,12 @@ public class SurveyAServiceImpl implements SurveyAService {
 	public void setSqlSession(SqlSession sqlSession) {
 		this.sqlSession = sqlSession;
 	}
-	
+
 	@Override
 	public void add(SurveyA a) {
 		// TODO Auto-generated method stub
 		dao = sqlSession.getMapper(SurveyADao.class);
 		dao.insert(a);
-
 	}
 
 	@Override
